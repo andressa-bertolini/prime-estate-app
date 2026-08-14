@@ -4,7 +4,7 @@ interface ChoiceChipsProps {
   }
   
   const ChoiceChips: React.FC<ChoiceChipsProps> = ({ value, onChange }) => {
-    const handleChipClick = (e: React.MouseEvent<HTMLButtonElement>, index: number, newPurpose: string) => {
+    const handleChipClick = (e: React.MouseEvent<HTMLButtonElement>, newPurpose: string) => {
       e.preventDefault();
       if (newPurpose !== value) {
         onChange(newPurpose);

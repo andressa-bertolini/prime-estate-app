@@ -11,7 +11,6 @@ import { SearchService } from "@services/search/SearchService";
 import ChoiceChips from "../ChoiceChips";
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import { Option } from "./search.types";
 import { searchDefaultValues } from "@context/SearchContext";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
@@ -31,8 +30,6 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
 
     const [places, setPlaces] = useState([]);
     const [openFilter, setOpenFilter] = useState(false);
-    const [isSearching, setIsSearching] = useState<boolean>(false);
-    const [isInitialized, setIsInitialized] = useState(false);
     
     const options = ["Apartment", "House"].map(opt => opt.toLowerCase());
     const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
@@ -89,22 +86,11 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
         }));
     };
 
-    const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newQuery = event.currentTarget.value;
-        setQuery(newQuery);
-
-        if(newQuery.trim().length === 0){
-            setIsSearching(false);
-        }else{
-            setIsSearching(true);
-        }
-    }
-
     const handlePurposeValue = (data: string) => {
         setPurpose(data);
     };
 
-    const handlePriceChange = (event: Event, newValue: number | number[]) => {
+    const handlePriceChange = (newValue: number | number[]) => {
         setPrice(newValue as [number, number]);
     };
 
@@ -125,12 +111,6 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
         setOpenFilter(false);
         onSearch?.();
         navigate(`/properties?${params.toString()}`);
-    };
-
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter') {
-            handleSubmit(event);
-        }
     };
 
     const handleChipClick = (type: 'beds' | 'baths', value: number, event: React.MouseEvent) => {

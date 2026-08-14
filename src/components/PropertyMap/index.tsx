@@ -53,9 +53,9 @@ const PropertyMap = ({
         img.style.objectFit = "contain";
         markerElement.appendChild(img);
 
-        const marker = new maplibregl.Marker({ element: markerElement })
-            .setLngLat([longitude, latitude])
-            .addTo(map.current);
+        // const marker = new maplibregl.Marker({ element: markerElement })
+        //     .setLngLat([longitude, latitude])
+        //     .addTo(map.current);
 
         return () => {
             if (map.current) {
