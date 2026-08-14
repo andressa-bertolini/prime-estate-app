@@ -137,8 +137,7 @@ npm install
 
 3. Create a `.env` file (see `.env.example`):
 ```
-VITE_API_URL=https://prime-estate-api.onrender.com/api
-VITE_USE_MSW=false
+VITE_API_URL=???
 ```
 
 For a local API, use `VITE_API_URL=http://localhost:3333/api`. Set `VITE_USE_MSW=true` to use MSW mocks instead.
