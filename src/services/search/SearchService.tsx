@@ -1,25 +1,36 @@
 import axios from "axios";
-import { Place, FetchParams } from "../../types/search.types"
+import { Place, FetchParams } from "../../types/search.types";
+
+const apiBaseURL =
+  import.meta.env.VITE_API_URL?.replace(/\/$/, "") ||
+  `${import.meta.env.BASE_URL}api`;
 
 const SearchAPI = axios.create({
-  baseURL: `${import.meta.env.BASE_URL}api/`
+  baseURL: `${apiBaseURL}/`,
 });
 
-const fetchPlaces = async (params: FetchParams): Promise<Place[]> => {
-  const { limit = 10, ...filters } = params || {};
-  const query = new URLSearchParams({
-    limit: String(limit),
-    ...filters
-  });
+const fetchPlaces = async (params: FetchParams = {}): Promise<Place[]> => {
+  const query = new URLSearchParams();
+
+  if (params.limit !== undefined) {
+    query.set("limit", String(params.limit));
+  }
+
+  if (params.state) {
+    query.set("state", params.state);
+  }
+
   try {
-    const response = await SearchAPI.get(`/places?${query.toString()}`);
-    return response.data;
-  } catch (error: any) {
+    const response = await SearchAPI.get(
+      `/places${query.toString() ? `?${query.toString()}` : ""}`
+    );
+    return Array.isArray(response.data) ? response.data : [];
+  } catch (error) {
     console.error(error);
     return [];
   }
-}
+};
 
 export const SearchService = {
-  fetchPlaces
-}
+  fetchPlaces,
+};

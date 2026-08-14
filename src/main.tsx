@@ -12,13 +12,17 @@ import 'swiper/css/scrollbar';
 const queryClient = new QueryClient();
 
 async function enableMocking() {
-    const { worker } = await import("./mocks/browser");
+  if (import.meta.env.VITE_USE_MSW !== 'true') {
+    return;
+  }
 
-    await worker.start({
-      serviceWorker: {
-        url: `${import.meta.env.BASE_URL}mockServiceWorker.js`,
-      },
-    });
+  const { worker } = await import("./mocks/browser");
+
+  await worker.start({
+    serviceWorker: {
+      url: `${import.meta.env.BASE_URL}mockServiceWorker.js`,
+    },
+  });
 }
 
 enableMocking().then(() => {

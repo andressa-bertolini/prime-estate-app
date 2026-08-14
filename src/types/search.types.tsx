@@ -1,12 +1,9 @@
 export type FetchParams = {
-  limit: string;
-}
+  limit?: string | number;
+  state?: string;
+};
 
 export type Place = {
-  id: string;
-  type: string;
-  city: string;
-  country: string;
-  latitude: number;
-  longitude: number;
+  state: string;
+  cities: string[];
 };

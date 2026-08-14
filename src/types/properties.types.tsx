@@ -1,19 +1,35 @@
 export interface Property {
   id: number;
   title: string;
+  description: string;
   purpose: "rent" | "sale";
+  type: "apartment" | "house";
   price: number;
   area: number;
-  beds: number;
-  baths: number;
-  location: string;
-  image: string;
+  bedrooms: number;
+  bathrooms: number;
+  city: string;
+  state: string;
+  lat: number;
+  long: number;
+  featuredImage: string;
+  images: string[];
+  amenities: string[];
+  agency?: {
+    logo?: {
+      url?: string;
+    };
+  };
 }
 
 export type FetchParams = {
-  purpose?: "rent" | "sale";
-  beds?: number;
-  baths?: number;
-  limit?: number;
-  offset?: number;
-}
+  query?: string;
+  purpose?: "rent" | "sale" | string;
+  type?: string;
+  priceMin?: string | number;
+  priceMax?: string | number;
+  beds?: string | number;
+  baths?: string | number;
+  limit?: string | number;
+  offset?: string | number;
+};
