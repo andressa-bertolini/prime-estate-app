@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 
 /* Components */
 import Search from "@components/Search";
-import SectionHeader from "@components/SectionHeader";
 import PropertyItem from "@components/PropertyItem";
 import Skeleton from "@components/Skeleton";
 import FullBackgroundCTA from "@layouts/FullBackgroundCTA";
@@ -24,10 +23,10 @@ const Home = () => {
         });
     };
 
-    const { data: propertiesRent, isError: isErrorRent, isLoading: isPendingRent } = 
+    const { data: propertiesRent, isLoading: isPendingRent } = 
         usePropertyQuery("propertiesRent", () => PropertiesService.fetchProperties({ purpose: "rent", limit: "4" }));
 
-    const { data: propertiesSale, isError: isErrorSale, isLoading: isPendingSale } = 
+    const { data: propertiesSale, isLoading: isPendingSale } = 
         usePropertyQuery("propertiesSale", () => PropertiesService.fetchProperties({ purpose: "sale", limit: "4" }));
 
     return(

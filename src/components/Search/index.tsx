@@ -28,13 +28,13 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
         query, purpose, type, price, beds, baths
     }, setSearchParams } = useSearch();
 
-    const [places, setPlaces] = useState([]);
+    const [places, setPlaces] = useState<{ name: string; type: string }[]>([]);
     const [openFilter, setOpenFilter] = useState(false);
     
     const options = ["Apartment", "House"].map(opt => opt.toLowerCase());
-    const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+    const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-    const getPriceRange = (currentPurpose) => {
+    const getPriceRange = (currentPurpose: string) => {
         return currentPurpose === "sale" 
             ? { min: 50000, max: 1000000 }
             : { min: 500, max: 5000 };
@@ -90,7 +90,7 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
         setPurpose(data);
     };
 
-    const handlePriceChange = (newValue: number | number[]) => {
+    const handlePriceChange = (_event: Event, newValue: number | number[]) => {
         setPrice(newValue as [number, number]);
     };
 
@@ -173,6 +173,7 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
                 price: [priceMin, priceMax],
                 beds: bedsParam,
                 baths: bathsParam,
+                sqft: searchDefaultValues.sqft,
             });
         } else {
             const defaultPurpose = searchDefaultValues.purpose;
@@ -185,10 +186,9 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
                 price: [defaultRange.min, defaultRange.max],
                 beds: 0,
                 baths: 0,
+                sqft: searchDefaultValues.sqft,
             });
         }
-        
-        setIsInitialized(true);
     }, [urlSearchParams.toString()]);
 
     const safePrice = price && Array.isArray(price) && price.length === 2 
@@ -209,10 +209,14 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
                                 freeSolo
                                 value={places.find(p => p.name === query) || { name: query, type: '' }}
                                 options={places}
-                                getOptionLabel={(option) => option.name || ''}
-                                groupBy={(option) => option.type}
+                                getOptionLabel={(option) =>
+                                    typeof option === "string" ? option : option.name || ""
+                                }
+                                groupBy={(option) =>
+                                    typeof option === "string" ? "" : option.type
+                                }
                                 className="custom-input"
-                                onInputChange={(event, newInputValue) => {
+                                onInputChange={(_event, newInputValue) => {
                                     setQuery(newInputValue);
                                 }}
                                 renderGroup={(params) => (
@@ -258,7 +262,7 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
                                 value={type}
                                 disableClearable
                                 className="custom-input"
-                                onChange={(event, newValue) => {
+                                onChange={(_event, newValue) => {
                                     setType(newValue);
                                 }}
                                 getOptionLabel={(option) => capitalize(option)}
@@ -329,8 +333,8 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
                                             label={num === 4 ? "4+" : num.toString()}
                                             clickable
                                             color={safeBeds === num ? "primary" : "default"}
-                                            variant={safeBeds === num ? "filled" : ""}
-                                            onClick={(e) => handleChipClick('beds', num, e)}
+                                            variant={safeBeds === num ? "filled" : "outlined"}
+                                            onClick={(e: React.MouseEvent) => handleChipClick('beds', num, e)}
                                             sx={{
                                                 backgroundColor: safeBeds === num ? '#1296a9' : 'white',
                                                 color: safeBeds === num ? 'white' : 'black',
@@ -352,8 +356,8 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
                                             key={num}
                                             label={num === 4 ? "4+" : num.toString()}
                                             clickable
-                                            variant={safeBaths === num ? "filled" : ""}
-                                            onClick={(e) => handleChipClick('baths', num, e)}
+                                            variant={safeBaths === num ? "filled" : "outlined"}
+                                            onClick={(e: React.MouseEvent) => handleChipClick('baths', num, e)}
                                             sx={{
                                                 backgroundColor: safeBaths === num ? '#1296a9' : 'white',
                                                 color: safeBaths === num ? 'white' : 'black',

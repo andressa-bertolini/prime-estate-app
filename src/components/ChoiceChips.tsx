@@ -18,13 +18,13 @@ interface ChoiceChipsProps {
         <div className="choice-chip__bg" style={{ left: `${activeIndex * 50}%` }}></div>
         <button
           className={`choice-chip ${activeIndex === 0 ? "active" : ""}`}
-          onClick={(e) => handleChipClick(e, 0, "rent")}
+          onClick={(e) => handleChipClick(e, "rent")}
         >
           Rent
         </button>
         <button
           className={`choice-chip ${activeIndex === 1 ? "active" : ""}`}
-          onClick={(e) => handleChipClick(e, 1, "sale")}
+          onClick={(e) => handleChipClick(e, "sale")}
         >
           Buy
         </button>

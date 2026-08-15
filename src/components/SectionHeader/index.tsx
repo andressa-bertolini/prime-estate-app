@@ -1,9 +1,7 @@
 import "./sectionHeader.css";
 import { SectionHeaderProps } from "./sectionHeader.types";
 
-import { NavLink } from "react-router-dom";
-
-const SectionHeader = ({ heading, title, buttonText, linkUrl }: SectionHeaderProps) => {
+const SectionHeader = ({ title }: SectionHeaderProps) => {
     return(
         <div className="section-header">
             <div className="section-header-content container">

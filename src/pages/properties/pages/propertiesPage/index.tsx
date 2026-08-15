@@ -36,7 +36,6 @@ const Properties = () => {
     const priceMax = searchParams.get("priceMax");
     const beds = searchParams.get("beds");
     const baths = searchParams.get("baths");
-    const sqft = searchParams.get("sqft");
     const view = searchParams.get("view");
 
     const currentPage = Math.max(1, parseInt(searchParams.get("page") || "1", 10));
@@ -44,7 +43,6 @@ const Properties = () => {
 
     const {
         data: properties,
-        isError,
         isPending
       } = useQuery({
         queryKey: ["properties", purpose, type],

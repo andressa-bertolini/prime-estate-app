@@ -1,6 +1,6 @@
 export type SectionHeaderProps = {
-  heading: string;
   title: string;
-  buttonText: string;
-  linkUrl: string;
-}
+  heading?: string;
+  buttonText?: string;
+  linkUrl?: string;
+};

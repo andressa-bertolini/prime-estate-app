@@ -27,7 +27,7 @@ const fetchProperties = async (params: FetchParams = {}): Promise<Property[]> =>
   const query = toQueryParams(params);
 
   try {
-    const response = await PropertiesApi.get(
+    const response = await PropertiesApi.get<Property[]>(
       `/properties${query.toString() ? `?${query.toString()}` : ""}`
     );
     let properties = response.data;
@@ -53,7 +53,7 @@ const fetchProperties = async (params: FetchParams = {}): Promise<Property[]> =>
 
 const fetchPropertyById = async (id: number): Promise<Property | undefined> => {
   try {
-    const response = await PropertiesApi.get(`/properties/${id}`);
+    const response = await PropertiesApi.get<Property>(`/properties/${id}`);
     return response.data;
   } catch (error) {
     console.error(error);
