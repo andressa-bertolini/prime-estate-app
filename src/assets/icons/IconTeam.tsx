@@ -18,4 +18,4 @@ const IconTeam = ({ color = 'black' }: IconTeamProps) => {
     );
 };
   
-  export default IconTeam;
+export default IconTeam;
