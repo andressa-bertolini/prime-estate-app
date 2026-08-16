@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { IProperty } from "../properties.types"
-import { PropertiesService } from "@services/properties/PropertiesService";
+import { PropertiesService } from "@/services/properties/PropertiesService";
 import { NavLink } from "react-router-dom";
 
 /* Components */
-import Search from "@components/Search";
-import PropertyItem from "@components/PropertyItem";
-import Skeleton from "@components/Skeleton";
-import FullBackgroundCTA from "@layouts/FullBackgroundCTA";
-import AboutTopics from "@components/AboutTopics";
+import Search from "@/components/Search";
+import PropertyItem from "@/components/PropertyItem";
+import Skeleton from "@/components/Skeleton";
+import FullBackgroundCTA from "@/layouts/FullBackgroundCTA";
+import AboutTopics from "@/components/AboutTopics";
 
 /* Images */
-import Savings from "@assets/images/savings.jpg";
-import HomeKeys from "@assets/images/home-keys.jpg";
+import Savings from "@/assets/images/savings.jpg";
+import HomeKeys from "@/assets/images/home-keys.jpg";
 
 const Home = () => {
     const usePropertyQuery = (queryKey: string, queryFn: () => Promise<IProperty[]>) => {

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import Logo from "@assets/images/logo-text.png";
-import IconBurgerMenu from "@assets/icons/icon-burger-menu.svg";
+import Logo from "@/assets/images/logo-text.png";
+import IconBurgerMenu from "@/assets/icons/icon-burger-menu.svg";
 import SearchIcon from '@mui/icons-material/Search';
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 

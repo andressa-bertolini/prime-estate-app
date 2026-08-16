@@ -1,4 +1,4 @@
-import { useSearch } from "@context/SearchContext";
+import { useSearch } from "@/context/SearchContext";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { 
@@ -7,11 +7,11 @@ import {
     Slider,
     InputAdornment
 } from '@mui/material';
-import { SearchService } from "@services/search/SearchService";
+import { SearchService } from "@/services/search/SearchService";
 import ChoiceChips from "../ChoiceChips";
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import { searchDefaultValues } from "@context/SearchContext";
+import { searchDefaultValues } from "@/context/SearchContext";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 

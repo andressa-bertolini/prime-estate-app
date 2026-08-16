@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { PropertiesService } from "@services/properties/PropertiesService";
+import { PropertiesService } from "@/services/properties/PropertiesService";
 import { useQuery } from "@tanstack/react-query";
 import { createPortal } from "react-dom";
 
@@ -11,14 +11,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-import RelatedProperties from "@components/RelatedProperties";
-import PropertyMap from "@components/PropertyMap";
+import RelatedProperties from "@/components/RelatedProperties";
+import PropertyMap from "@/components/PropertyMap";
 
-import IconSqft2 from "@assets/icons/icon-sqft.svg";
-import IconBed2 from "@assets/icons/icon-bed.svg";
-import IconBath2 from "@assets/icons/icon-bath.svg";
-import IconCheck from "@assets/icons/icon-check.svg";
-import SadHouse from "@assets/images/sad-house.png";
+import IconSqft2 from "@/assets/icons/icon-sqft.svg";
+import IconBed2 from "@/assets/icons/icon-bed.svg";
+import IconBath2 from "@/assets/icons/icon-bath.svg";
+import IconCheck from "@/assets/icons/icon-check.svg";
+import SadHouse from "@/assets/images/sad-house.png";
 
 const Property = () => {
     const { id } = useParams<{ id: string }>();

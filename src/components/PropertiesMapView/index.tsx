@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import IconPin from "@assets/icons/icon-pin.svg";
-import { IProperty } from "@services/properties/PropertiesService";
+import IconPin from "@/assets/icons/icon-pin.svg";
+import { Property } from "@/types/properties.types";
 
-interface PropertiesMapViewProps {
-    properties: IProperty[];
+type PropertiesMapViewProps = {
+    properties: Property[];
     height?: string;
 }
 

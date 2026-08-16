@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import IconPin from "@assets/icons/icon-pin.svg";
+import IconPin from "@/assets/icons/icon-pin.svg";
 
 interface PropertyMapProps {
     latitude: number;

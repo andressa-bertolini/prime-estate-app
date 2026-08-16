@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ScrollToTop from "@components/ScrollToTop";
+import ScrollToTop from "@/components/ScrollToTop";
 
 /* layouts */
-import Navigation from "@layouts/Navigation";
-import Footer from "@layouts/Footer";
+import Navigation from "@/layouts/Navigation";
+import Footer from "@/layouts/Footer";
 
 /* pages */
-import Home from "@pages/home";
-import PropertiesRoutes from "@pages/properties/propertiesRoutes";
-import PropertyRoutes from "@pages/property/propertyRoutes";
-import AboutRoutes from "@pages/about/aboutRoutes";
-import AgentsRoutes from "@pages/agents/agentsRoutes";
-import CalculatorRoutes from "@pages/calculator/calculatorRoutes";
+import Home from "@/pages/home";
+import PropertiesRoutes from "@/pages/properties/propertiesRoutes";
+import PropertyRoutes from "@/pages/property/propertyRoutes";
+import AboutRoutes from "@/pages/about/aboutRoutes";
+import AgentsRoutes from "@/pages/agents/agentsRoutes";
+import CalculatorRoutes from "@/pages/calculator/calculatorRoutes";
 
 const AppRoutes = () => {
   return (

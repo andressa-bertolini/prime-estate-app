@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import LogoWhite from "@assets/images/logo-text-white.png";
+import LogoWhite from "@/assets/images/logo-text-white.png";
 
 const Footer = () => {
     return(

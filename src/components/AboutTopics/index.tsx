@@ -1,6 +1,6 @@
-import IconTeam from '@assets/icons/IconTeam';
-import IconHandshake from '@assets/icons/IconHandshake';
-import IconBulb from '@assets/icons/IconBulb';
+import IconTeam from '@/assets/icons/IconTeam';
+import IconHandshake from '@/assets/icons/IconHandshake';
+import IconBulb from '@/assets/icons/IconBulb';
 
 type AboutTopicsProps = {
     iconsColor?: "white";

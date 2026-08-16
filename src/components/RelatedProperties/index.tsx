@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { PropertiesService, IProperty } from "@services/properties/PropertiesService";
-import PropertyItem from "@components/PropertyItem";
+import { PropertiesService, IProperty } from "@/services/properties/PropertiesService";
+import PropertyItem from "@/components/PropertyItem";
 
 const RelatedProperties = () => {
     const { id } = useParams<{ id: string }>();

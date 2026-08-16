@@ -1,22 +1,22 @@
 import { useMemo, useState, useEffect, useRef } from 'react';
 import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { IProperty, PropertiesService } from "@services/properties/PropertiesService";
+import { IProperty, PropertiesService } from "@/services/properties/PropertiesService";
 import { 
   Autocomplete, 
   TextField,
 } from '@mui/material';
 
-import SadHouse from "@assets/images/sad-house.png";
-import IconMap from "@assets/icons/icon-map.svg";
-import IconList from "@assets/icons/icon-list.svg";
-import IconFilter from "@assets/icons/icon-filter.svg";
+import SadHouse from "@/assets/images/sad-house.png";
+import IconMap from "@/assets/icons/icon-map.svg";
+import IconList from "@/assets/icons/icon-list.svg";
+import IconFilter from "@/assets/icons/icon-filter.svg";
 
-import PropertyItem from "@components/PropertyItem";
-import Search from "@components/Search";
-import Skeleton from "@components/Skeleton";
-import Pagination from "@components/Pagination";
-import PropertiesMapView from "@components/PropertiesMapView";
+import PropertyItem from "@/components/PropertyItem";
+import Search from "@/components/Search";
+import Skeleton from "@/components/Skeleton";
+import Pagination from "@/components/Pagination";
+import PropertiesMapView from "@/components/PropertiesMapView";
 
 const ITEMS_PER_PAGE = 9;
 

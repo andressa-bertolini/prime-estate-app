@@ -1,5 +1,5 @@
-import IconArrowBack from '@assets/icons/IconArrowBack';
-import IconArrowForward from '@assets/icons/IconArrowForward';
+import IconArrowBack from '@/assets/icons/IconArrowBack';
+import IconArrowForward from '@/assets/icons/IconArrowForward';
 
 type PaginationProps = {
   onPageChange: (page: number) => void;
