@@ -254,8 +254,6 @@ const Properties = () => {
                     currentPage={currentPage}
                     totalPages={totalPages}
                     onPageChange={handlePageChange}
-                    itemsCount={filteredProperties.length}
-                    itemsPerPage={ITEMS_PER_PAGE}
                 />
               )}
               </>}

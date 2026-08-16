@@ -1,20 +1,18 @@
-import React from 'react';
-import IconArrowBack from "@assets/icons/icon-arrow-back.svg";
-import IconArrowForward from "@assets/icons/icon-arrow-forward.svg";
+import IconArrowBack from '@assets/icons/IconArrowBack';
+import IconArrowForward from '@assets/icons/IconArrowForward';
 
-interface PaginationProps {
+type PaginationProps = {
+  onPageChange: (page: number) => void;
   currentPage: number;
   totalPages: number;
-  onPageChange: (page: number) => void;
-  itemsCount: number;
-  itemsPerPage: number;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
+const Pagination = ({
   onPageChange,
   currentPage,
   totalPages,
-}) => {
+}:PaginationProps) => {
+  
   const pages = Array.from(
     { length: totalPages },
     (_, index) => index + 1
@@ -26,7 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({
         onClick={() => onPageChange(currentPage - 1)}
         className="pagination-arrow"
       >
-        <img src={IconArrowBack} className="icon-arrow" alt="Previous"/>
+        <IconArrowBack/>
       </button>}
 
       {pages.map((page) => (
@@ -43,7 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({
         onClick={() => onPageChange(currentPage + 1)}
         className="pagination-arrow"
       >
-        <img src={IconArrowForward} className="icon-arrow" alt="Next"/>
+        <IconArrowForward />
       </button>}
     </div>
   );
