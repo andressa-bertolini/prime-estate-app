@@ -1,13 +1,13 @@
-import "./propertyItem.css";
-import { PropertyItemProps } from "./propertyItem.types";
-
 import { NavLink } from "react-router-dom";
-import IconLocation from "@/assets/icons/icon-location.svg";
+import IconLocation from "@/assets/icons/IconLocation";
 import IconSqft from "@/assets/icons/icon-sqft.svg";
 import IconBed from "@/assets/icons/icon-bed.svg";
 import IconBath from "@/assets/icons/icon-bath.svg";
 
-const PropertyItem = ({ property }: PropertyItemProps) => {
+import "./propertyItem.css";
+import { Property } from "@/types/properties.types";
+
+const PropertyItem = ({ property }: { property: Property }) => {
     const amenities = Array.isArray(property.amenities) ? property.amenities : [];
     const limit = 4;
     const limitedAmenities = amenities.slice(0, limit);
@@ -22,7 +22,9 @@ const PropertyItem = ({ property }: PropertyItemProps) => {
             <h3>{property.title}</h3>
             <p className="property-features">
                 <span className="highlighted-feature">
-                    <img src={IconLocation} className="property-icon sqft" alt="Location"/>
+                    <IconLocation width="14px"/>
+                    {/* <IconLocation className="property-icon sqft"/> */}
+
                     {property.city}
                 </span>
                 <span>

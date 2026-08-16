@@ -9,10 +9,11 @@ type PropertiesMapViewProps = {
     height?: string;
 }
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const PropertiesMapView = ({ properties, height = "600px" }: PropertiesMapViewProps) => {
     const mapContainer = useRef<HTMLDivElement>(null);
     const map = useRef<maplibregl.Map | null>(null);
-    const baseUrl = import.meta.env.BASE_URL;
 
     useEffect(() => {
         if (!mapContainer.current || properties.length === 0) return;
@@ -95,12 +96,7 @@ const PropertiesMapView = ({ properties, height = "600px" }: PropertiesMapViewPr
     return (
         <div
             ref={mapContainer}
-            style={{
-                width: "100%",
-                height,
-                overflow: "hidden",
-                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-            }}
+            className="properties-map-view"
         />
     );
 };

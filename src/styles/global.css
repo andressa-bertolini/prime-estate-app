@@ -414,11 +414,11 @@ html, body {
   }
 
   .search-container {
-    background-image: url('@assets/images/search-bg.jpg');
+    background-image: url('@/assets/images/search-bg.jpg');
   }
 
   .calculator-container {
-    background-image: url('@assets/images/savings.jpg');
+    background-image: url('@/assets/images/savings.jpg');
   }
   
   .search-container:after, .calculator-container:after {
@@ -1624,4 +1624,11 @@ main {
   .list-properties__orderby > span{
     display: none;
   }
+}
+
+.properties-map-view {
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }

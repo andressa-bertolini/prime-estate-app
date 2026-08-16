@@ -14,7 +14,6 @@ const PropertyMap = ({
     latitude,
     longitude,
     title,
-    height = "350px",
 }: PropertyMapProps) => {
     const mapContainer = useRef<HTMLDivElement>(null);
     const map = useRef<maplibregl.Map | null>(null);
@@ -53,10 +52,6 @@ const PropertyMap = ({
         img.style.objectFit = "contain";
         markerElement.appendChild(img);
 
-        // const marker = new maplibregl.Marker({ element: markerElement })
-        //     .setLngLat([longitude, latitude])
-        //     .addTo(map.current);
-
         return () => {
             if (map.current) {
                 map.current.remove();
@@ -66,16 +61,7 @@ const PropertyMap = ({
     }, [latitude, longitude, title]);
 
     return (
-        <div
-            ref={mapContainer}
-            style={{
-                width: "100%",
-                height,
-                overflow: "hidden",
-                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-            }}
-            data-testid="property-map"
-        />
+        <div ref={mapContainer} />
     );
 };
 

@@ -15,11 +15,6 @@ export interface Property {
   featuredImage: string;
   images: string[];
   amenities: string[];
-  agency?: {
-    logo?: {
-      url?: string;
-    };
-  };
 }
 
 export type FetchParams = {
