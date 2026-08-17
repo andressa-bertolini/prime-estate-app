@@ -1,8 +1,8 @@
 type IconArrowBackProps = {
     color?: string;
-  };
+};
   
-  const IconArrowBack = ({ color = 'black' }: IconArrowBackProps) => {
+const IconArrowBack = ({ color = 'black' }: IconArrowBackProps) => {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -16,6 +16,6 @@ type IconArrowBackProps = {
         />
       </svg>
     );
-  };
+};
   
-  export default IconArrowBack;
+export default IconArrowBack;

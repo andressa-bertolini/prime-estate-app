@@ -1,55 +1,50 @@
 import { NavLink } from "react-router-dom";
 import IconLocation from "@/assets/icons/IconLocation";
-import IconSqft from "@/assets/icons/icon-sqft.svg";
-import IconBed from "@/assets/icons/icon-bed.svg";
-import IconBath from "@/assets/icons/icon-bath.svg";
-
-import "./propertyItem.css";
+import IconSqft from "@/assets/icons/IconSqft";
+import IconBed from "@/assets/icons/IconBed";
+import IconBath from "@/assets/icons/IconBath";
 import { Property } from "@/types/properties.types";
+import styles from "./styles.module.css";
 
 const PropertyItem = ({ property }: { property: Property }) => {
-    const amenities = Array.isArray(property.amenities) ? property.amenities : [];
     const limit = 4;
-    const limitedAmenities = amenities.slice(0, limit);
+    const limitedAmenities = property.amenities.slice(0, limit);
 
     return (
-        <NavLink to={`/property/${property.id}`} className="property-item">
-            <img src={property.featuredImage} className="property-cover" alt={property.title}/>
-            <span className="property-badge">
+        <NavLink to={`/property/${property.id}`} className={styles.propertyItem}>
+            <img src={property.featuredImage} className={styles.propertyCover} alt={property.title}/>
+            <span className={`${styles.propertyBadge} propertyBadge`}>
                 {property.purpose === 'rent' ? 'For Rent' : ''}
                 {property.purpose === 'sale' ? 'For Sale' : ''}
             </span>
             <h3>{property.title}</h3>
-            <p className="property-features">
-                <span className="highlighted-feature">
-                    <IconLocation />
-                    {/* <IconLocation className="property-icon sqft"/> */}
-
+            <p className={`${styles.propertyFeatures} ${styles.iconSmallAligment}`}>
+                <span className={styles.highlightedFeature}>
+                    <IconLocation width="14px"/>
                     {property.city}
                 </span>
-                <span>
-                    <img src={IconSqft} className="property-icon sqft" alt="Square feet"/>
-                    {property.area && typeof property.area === "number"
-                        ? Math.round(property.area * 10.764)
-                        : ""} <strong>sqft</strong>&nbsp;
+                <span className={styles.iconSmallAligment}>
+                    <IconSqft width="14px" />
+                    {Math.round(property.area * 10.764)}&nbsp;
+                    <strong>sqft</strong>&nbsp;
                 </span>
-                <span>
-                    <img src={IconBed} className="property-icon bed" alt="Bed"/>
+                <span className={styles.iconMediumAligment}>
+                    <IconBed width="17px"/>
                     {property.bedrooms} <strong>bed{property.bedrooms !== 1 ? 's' : ''}</strong>&nbsp;
                 </span>
-                <span>
-                    <img src={IconBath} className="property-icon bath" alt="Bath"/>
+                <span className={styles.iconSmallAligment}>
+                    <IconBath width="15px" />
                     {property.bathrooms} <strong>bath{property.bathrooms !== 1 ? 's' : ''}</strong>
                 </span>
             </p>
-            <ul className="property-amenities">
+            <ul className={styles.propertyAmenities}>
                 {limitedAmenities.map((amenity, index) => (
                     <li key={index}>{amenity}</li>
                 ))}
-                {limitedAmenities.length < amenities.length && <li>...</li>}
+                {limitedAmenities.length < property.amenities.length && <li>...</li>}
             </ul>
-            <div className="property-footer">
-                <p className="property-price">${property.price.toLocaleString('en-US')}</p>
+            <div className={styles.propertyFooter}>
+                <p className={styles.propertyPrice}>${property.price.toLocaleString('en-US')}</p>
             </div>
         </NavLink>
     );

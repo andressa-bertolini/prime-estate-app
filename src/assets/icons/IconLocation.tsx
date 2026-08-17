@@ -1,13 +1,15 @@
 type IconLocationProps = {
     color?: string;
+    width?: string;
 };
   
-const IconLocation = ({ color = 'black' }: IconLocationProps) => {
+const IconLocation = ({ color = 'black', width = '15px' }: IconLocationProps) => {
     return (
         <svg  
             xmlns="http://www.w3.org/2000/svg"
             fill={color} 
-            viewBox="0 0 14 14"
+            viewBox="0 0 297 297"
+            width={width}
         >
         <g>
             <path d="M148.5,0C87.43,0,37.747,49.703,37.747,110.797c0,91.026,99.729,179.905,103.976,183.645

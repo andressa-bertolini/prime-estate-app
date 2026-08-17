@@ -1,3 +1,7 @@
+// .propertyBadge {
+//     margin-top: 20px;
+//   }
+
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,9 +18,9 @@ import 'swiper/css/scrollbar';
 import RelatedProperties from "@/components/RelatedProperties";
 import PropertyMap from "@/components/PropertyMap";
 
-import IconSqft2 from "@/assets/icons/icon-sqft.svg";
-import IconBed2 from "@/assets/icons/icon-bed.svg";
-import IconBath2 from "@/assets/icons/icon-bath.svg";
+import IconSqft from "@/assets/icons/iconSqft";
+import IconBed from "@/assets/icons/iconBed";
+import IconBath from "@/assets/icons/iconBath";
 import IconCheck from "@/assets/icons/icon-check.svg";
 import SadHouse from "@/assets/images/sad-house.png";
 
@@ -277,7 +281,7 @@ const Property = () => {
                 <div>
                     <div className="property-content__grid">
                         <div>
-                            <span className="property-badge">
+                            <span className="propertyBadge">
                                 {property.purpose === "rent" ? "For Rent" : ""}
                                 {property.purpose === "sale" ? "For Sale" : ""}
                             </span>
@@ -293,15 +297,15 @@ const Property = () => {
 
                             <p className="property-features">
                                 <span>
-                                    <img src={IconSqft2} className="property-icon sqft" alt="Square feet" />
+                                    {/* <img src={IconSqft2} className="property-icon sqft" alt="Square feet" /> */}
                                     {property.area ? Math.round(property.area) : ""} <strong>sqft</strong>
                                 </span>
                                 <span>
-                                    <img src={IconBed2} className="property-icon bed" alt="Bed" />
+                                    {/* <img src={IconBed2} className="property-icon bed" alt="Bed" /> */}
                                     {property.bedrooms} <strong>bed{property.bedrooms !== 1 ? 's' : ''}</strong>
                                 </span>
                                 <span>
-                                    <img src={IconBath2} className="property-icon bath" alt="Bath" />
+                                    {/* <img src={IconBath2} className="property-icon bath" alt="Bath" /> */}
                                     {property.bathrooms} <strong>bath{property.bathrooms !== 1 ? 's' : ''}</strong>
                                 </span>
                             </p>

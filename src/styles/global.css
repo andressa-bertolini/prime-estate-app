@@ -113,11 +113,6 @@ html, body {
     display: flex;
     flex-wrap: wrap;
   }
-
-  .properties-list .property-item {
-    padding-bottom: 0;
-    padding: 0 12px 24px 12px;
-  }
   
   @media(min-width: 1000px){
     .properties-page__grid {
@@ -126,21 +121,13 @@ html, body {
     }
   }
   
-  .property-badge {
+  .propertyBadge {
     background-color: #1296a9;
     color: white;
     font-weight: bold;
     font-size: 12px;
     padding: 5px 10px;
     display: inline-block;
-    margin-top: 20px;
-  }
-  
-  .property-item h3 {
-    font-weight: 600;
-    margin-top: 5px;
-    margin-bottom: 0;
-    color: #1296a9;
   }
 
   @media (min-width: 768px) {
@@ -155,74 +142,6 @@ html, body {
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
-  }
-  
-  .property-price {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .property-amenities {
-    list-style-type: none;
-    padding: 0;
-    color: #7c7b7b;
-  }
-  
-  .property-amenities li {
-    display: inline-block;
-    padding-right: 15px;
-    font-size: 14px;
-  }
-  
-  .property-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .property-footer img {
-    width: 60px;
-    height: auto;
-  }
-
-  .property-footer .property-price {
-    margin-top: 0;
-  }
-  
-  .property-icon {
-    margin-right: 3px;
-  }
-  
-  .property-icon.sqft{
-    width: 14px;
-    vertical-align: -1px;
-  }
-  
-  .property-icon.bed{
-    width: 17px;
-    vertical-align: -2px;
-  }
-  
-  .property-icon.bath{
-    width: 15px;
-    vertical-align: -1px;
-  }
-
-  .property-features {
-    margin-top: 0%;
-  }
-
-  .property-features svg {
-    width: 14px;
-  }
-  
-  .property-features span {
-    margin-right: 10px;
-  }
-
-  .property-features span.highlighted-feature {
-    display: block;
-    margin: 10px 0 20px;
   }
   
   .properties-page__list {

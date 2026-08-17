@@ -1,0 +1,103 @@
+.propertyItem {
+  background-color: #fff;
+  padding: 0 24px 50px 24px;
+  box-sizing: border-box;
+  width: 100%;
+  text-decoration: none;
+  color: #000;
+  position: relative;
+  padding-bottom: 0;
+  padding: 0 12px 24px 12px;
+}
+
+.propertyItem h3 {
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 0;
+  color: #1296a9;
+}
+
+@media(min-width: 768px){
+  .propertyItem {
+    width: 33%;
+  }
+}
+
+@media(min-width: 1000px){
+  .propertyItem {
+    width: 25%;
+  }
+}
+
+.propertyCover{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.propertyBadge{
+  position: absolute;
+  top: 0;
+  right: 24px;
+  margin: 0;
+}
+
+.propertyFeatures {
+  margin-top: 0%;
+}
+
+.propertyFeatures span {
+  margin-right: 10px;
+}
+
+.propertyFeatures span.highlightedFeature {
+  display: block;
+  margin: 10px 0 20px;
+}
+
+.highlightedFeature {
+  display: block;
+  margin: 10px 0 20px;
+}
+
+.iconSmallAligment svg{
+  vertical-align: -1px;
+  margin-right: 3px;
+}
+
+.iconMediumAligment svg{
+  vertical-align: -1px;
+  margin-right: 3px;
+}
+
+.propertyAmenities {
+  list-style-type: none;
+  padding: 0;
+  color: #7c7b7b;
+}
+
+.propertyAmenities li {
+  display: inline-block;
+  padding-right: 15px;
+  font-size: 14px;
+}
+
+.propertyPrice {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.propertyFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.propertyFooter img {
+  width: 60px;
+  height: auto;
+}
+
+.propertyFooter .propertyPrice {
+  margin-top: 0;
+}
