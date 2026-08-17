@@ -3,15 +3,15 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import IconPin from "@/assets/icons/icon-pin.svg";
 import { Property } from "@/types/properties.types";
+import styles from "./styles.module.css";
 
 type PropertiesMapViewProps = {
     properties: Property[];
-    height?: string;
 }
 
 const baseUrl = import.meta.env.BASE_URL;
 
-const PropertiesMapView = ({ properties, height = "600px" }: PropertiesMapViewProps) => {
+const PropertiesMapView = ({ properties }: PropertiesMapViewProps) => {
     const mapContainer = useRef<HTMLDivElement>(null);
     const map = useRef<maplibregl.Map | null>(null);
 
@@ -96,7 +96,7 @@ const PropertiesMapView = ({ properties, height = "600px" }: PropertiesMapViewPr
     return (
         <div
             ref={mapContainer}
-            className="properties-map-view"
+            className={styles.propertiesMap}
         />
     );
 };
