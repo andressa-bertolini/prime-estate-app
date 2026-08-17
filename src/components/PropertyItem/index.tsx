@@ -22,7 +22,7 @@ const PropertyItem = ({ property }: { property: Property }) => {
             <h3>{property.title}</h3>
             <p className="property-features">
                 <span className="highlighted-feature">
-                    <IconLocation width="14px"/>
+                    <IconLocation />
                     {/* <IconLocation className="property-icon sqft"/> */}
 
                     {property.city}

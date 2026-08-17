@@ -7,10 +7,7 @@ const IconLocation = ({ color = 'black' }: IconLocationProps) => {
         <svg  
             xmlns="http://www.w3.org/2000/svg"
             fill={color} 
-            height="800px" 
-            width="800px"
-            viewBox="0 0 297 297" 
-            xml:space="preserve"
+            viewBox="0 0 14 14"
         >
         <g>
             <path d="M148.5,0C87.43,0,37.747,49.703,37.747,110.797c0,91.026,99.729,179.905,103.976,183.645

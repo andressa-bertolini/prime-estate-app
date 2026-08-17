@@ -1,0 +1,28 @@
+.pagination {
+    text-align: center;
+    padding: 30px 0 80px;
+}
+
+.paginationArrow {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.paginationNumber {
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 5px;
+    color: #000;
+}
+
+.paginationNumber.paginationNumberActive{
+    background-color: #1296a9;
+    color: #fff;
+}
+

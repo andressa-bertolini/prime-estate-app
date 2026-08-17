@@ -1,6 +1,7 @@
 import IconTeam from '@/assets/icons/IconTeam';
 import IconHandshake from '@/assets/icons/IconHandshake';
 import IconBulb from '@/assets/icons/IconBulb';
+import styles from "./styles.module.css";
 
 type AboutTopicsProps = {
     iconsColor?: "white";
@@ -27,7 +28,7 @@ const topics = [
 
 const AboutTopics = ({ iconsColor }: AboutTopicsProps) => {
   return(
-    <div className="home-about__topics">
+    <div className={styles.aboutTopics}>
         {topics.map((topic) => {
             const Icon = topic.icon;
 

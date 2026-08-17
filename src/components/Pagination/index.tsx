@@ -1,5 +1,6 @@
 import IconArrowBack from '@/assets/icons/IconArrowBack';
 import IconArrowForward from '@/assets/icons/IconArrowForward';
+import styles from './styles.module.css';
 
 type PaginationProps = {
   onPageChange: (page: number) => void;
@@ -19,10 +20,10 @@ const Pagination = ({
   );
 
   return (
-    <div className="pagination">
+    <div className={styles.pagination}>
       {currentPage !== 1 && <button
         onClick={() => onPageChange(currentPage - 1)}
-        className="pagination-arrow"
+        className={styles.paginationArrow}
       >
         <IconArrowBack/>
       </button>}
@@ -31,7 +32,7 @@ const Pagination = ({
         <button
           key={page}
           onClick={() => onPageChange(page)}
-          className={`${page === currentPage ? 'pagination-number-active' : ''} pagination-number`}
+          className={`${page === currentPage ? styles.paginationNumberActive : ''} ${styles.paginationNumber}`}
         >
           {page}
         </button>
@@ -39,7 +40,7 @@ const Pagination = ({
 
       {currentPage !== totalPages && <button
         onClick={() => onPageChange(currentPage + 1)}
-        className="pagination-arrow"
+        className={styles.paginationArrow}
       >
         <IconArrowForward />
       </button>}
