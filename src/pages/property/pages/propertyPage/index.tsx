@@ -326,8 +326,6 @@ const Property = () => {
                                 <PropertyMap
                                     latitude={property.lat}
                                     longitude={property.long}
-                                    title={property.title}
-                                    height="350px"
                                 />
                             )}
                         </div>

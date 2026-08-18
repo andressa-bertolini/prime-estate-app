@@ -150,10 +150,6 @@ html, body {
     margin-top: 24px;
   }  
 
-  .related-properties .properties-page__list {
-    margin: 0 -24px;
-  }
-
   .properties-page, 
   .properties-page .properties-page__grid{
     min-height: calc(100vh - 78px);

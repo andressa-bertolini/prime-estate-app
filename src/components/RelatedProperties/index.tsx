@@ -1,8 +1,10 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { PropertiesService, IProperty } from "@/services/properties/PropertiesService";
+import { PropertiesService } from "@/services/properties/PropertiesService";
 import PropertyItem from "@/components/PropertyItem";
+import { Property } from "@/types/properties.types";
+import styles from "./styles.module.css";
 
 const RelatedProperties = () => {
     const { id } = useParams<{ id: string }>();
@@ -30,10 +32,10 @@ const RelatedProperties = () => {
         if (!currentProperty || !allProperties.length) return [];
 
         const otherProperties = allProperties.filter(
-            (prop: IProperty) => prop.id !== currentPropertyId
+            (prop: Property) => prop.id !== currentPropertyId
         );
 
-        const sorted = otherProperties.sort((a: IProperty, b: IProperty) => {
+        const sorted = otherProperties.sort((a: Property, b: Property) => {
             let scoreA = 0;
             let scoreB = 0;
 
@@ -67,7 +69,7 @@ const RelatedProperties = () => {
         <section className="related-properties">
             <h3>Related Properties</h3>
             <div className="properties-page__list">
-                {relatedProperties.map((property: IProperty) => (
+                {relatedProperties.map((property: Property) => (
                     <PropertyItem key={property.id} property={property} />
                 ))}
             </div>

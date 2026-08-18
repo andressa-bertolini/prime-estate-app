@@ -2,18 +2,16 @@ import { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import IconPin from "@/assets/icons/icon-pin.svg";
+import styles from "./styles.module.css";
 
-interface PropertyMapProps {
+type PropertyMapProps = {
     latitude: number;
     longitude: number;
-    title: string;
-    height?: string;
 }
 
 const PropertyMap = ({
     latitude,
     longitude,
-    title,
 }: PropertyMapProps) => {
     const mapContainer = useRef<HTMLDivElement>(null);
     const map = useRef<maplibregl.Map | null>(null);
@@ -58,10 +56,10 @@ const PropertyMap = ({
                 map.current = null;
             }
         };
-    }, [latitude, longitude, title]);
+    }, [latitude, longitude]);
 
     return (
-        <div ref={mapContainer} />
+        <div ref={mapContainer} className={styles.propertyMap} />
     );
 };
 
