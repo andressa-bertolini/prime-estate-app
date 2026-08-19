@@ -1,4 +1,3 @@
-import { useSearch } from "@/context/SearchContext";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { 
@@ -7,20 +6,21 @@ import {
     Slider,
     InputAdornment
 } from '@mui/material';
+import { useSearch, searchDefaultValues } from "@/context/SearchContext";
 import { SearchService } from "@/services/search/SearchService";
 import ChoiceChips from "../ChoiceChips";
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import { searchDefaultValues } from "@/context/SearchContext";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import styles from './styles.module.css';
 
 type SearchProps = {
-    fullfilters: boolean;
+    variant: string;
     onSearch?: () => void;
 };
 
-const Search = ({ fullfilters, onSearch }: SearchProps) => {
+const Search = ({ variant, onSearch }: SearchProps) => {
     const [urlSearchParams] = useSearchParams();
     const navigate = useNavigate();
 
@@ -200,8 +200,8 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="search-options">
-                <div className={(openFilter ? "open" : "") + " search-fields"}>
+            <div className={`${styles.search} ${styles[variant]}`}>
+                <div className={`${openFilter ? "open" : ""} ${styles.searchFields}`}>
                     <div>
                         <label>
                             <span>Where do you want to live?</span>
@@ -215,7 +215,7 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
                                 groupBy={(option) =>
                                     typeof option === "string" ? "" : option.type
                                 }
-                                className="custom-input"
+                                className="customInput"
                                 onInputChange={(_event, newInputValue) => {
                                     setQuery(newInputValue);
                                 }}
@@ -261,7 +261,7 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
                                 options={options}
                                 value={type}
                                 disableClearable
-                                className="custom-input"
+                                className="customInput"
                                 onChange={(_event, newValue) => {
                                     setType(newValue);
                                 }}
@@ -294,9 +294,9 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
                         </label>
                         <label>
                             <span>Price limit</span>
-                            <div className="search-options__range">
+                            <div>
                                 <Slider
-                                    className="custom-slider"
+                                    className="customSlider"
                                     value={safePrice}
                                     onChange={handlePriceChange}
                                     valueLabelDisplay="off"
@@ -322,8 +322,8 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
                             </div>
                         </label>
                     </div>
-                    {fullfilters ? (
-                        <div className="extra-filters">
+                    {variant === 'sidebar' ? (
+                        <div className="extraFilters">
                             <label>
                                 <span>Bedrooms</span>
                                 <Stack direction="row" spacing={1}>
@@ -375,7 +375,7 @@ const Search = ({ fullfilters, onSearch }: SearchProps) => {
                     ):""}
                 </div>
             </div>
-            <button type="submit" className="search-bar__submit">Search</button>
+            <button type="submit" className={`${styles.submit} button`}>Search</button>
         </form>
     );
 };

@@ -34,7 +34,7 @@ const Home = () => {
             <div className="home-search search-container">
                 <div className="search">
                     <div className="home-search__wrapper">
-                        <Search fullfilters={false}/>
+                        <Search variant="inline" />
                     </div>
                 </div>
             </div>

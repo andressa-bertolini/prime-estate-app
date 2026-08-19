@@ -188,7 +188,7 @@ const Properties = () => {
               </button>
               <div className={`search-properties__wrapper ${showFilters ? "is-open" : ""}`}>
                   <div className="search-properties">
-                    <Search fullfilters={true} onSearch={() => setShowFilters(false)} />
+                    <Search variant="sidebar" onSearch={() => setShowFilters(false)} />
                   </div>
               </div>
               <div className="list-properties__wrapper">
@@ -217,7 +217,7 @@ const Properties = () => {
                       value={orderBy}
                       disableClearable
                       onChange={(_, newValue) => setOrderBy(newValue)}
-                      className="custom-input-alt"
+                      className="customInput-alt"
                       renderInput={(params) => (
                         <TextField
                           {...params}

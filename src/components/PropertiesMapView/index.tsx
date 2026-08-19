@@ -96,7 +96,7 @@ const PropertiesMapView = ({ properties }: PropertiesMapViewProps) => {
     return (
         <div
             ref={mapContainer}
-            className={styles.propertiesMap}
+            className={styles.propertiesMapView}
         />
     );
 };

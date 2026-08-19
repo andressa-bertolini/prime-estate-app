@@ -98,7 +98,7 @@ const Calculator = () => {
                         <h1>Purchasing Power</h1>
                         <p>Use our calculator to estimate your budget and start your search for the perfect home</p>
                         <TextField
-                            className="custom-input"
+                            className="customInput"
                             label="Income ($)"
                             variant="outlined"
                             fullWidth
@@ -109,7 +109,7 @@ const Calculator = () => {
                         />
 
                         <TextField
-                            className="custom-input"
+                            className="customInput"
                             label="Entry ($)"
                             variant="outlined"
                             fullWidth
@@ -137,7 +137,7 @@ const Calculator = () => {
                         <p>Found a home you love? Enter the property's price to calculate your estimated down payment</p>
                         <label>
                             <TextField
-                                className="custom-input"
+                                className="customInput"
                                 label="Property's Price ($)"
                                 variant="outlined"
                                 fullWidth
