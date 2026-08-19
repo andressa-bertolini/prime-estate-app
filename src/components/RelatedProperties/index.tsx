@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { PropertiesService } from "@/services/properties/PropertiesService";
+import { fetchProperties, fetchPropertyById } from "@/services/properties/PropertiesService";
 import PropertyItem from "@/components/PropertyItem";
 import { Property } from "@/types/properties.types";
 import styles from "./styles.module.css";
@@ -12,17 +12,14 @@ const RelatedProperties = () => {
 
     const { data: currentProperty } = useQuery({
         queryKey: ["property", id],
-        queryFn: () => PropertiesService.fetchPropertyById(currentPropertyId),
+        queryFn: () => fetchPropertyById(currentPropertyId),
         enabled: !!id,
     });
 
     const { data: allProperties = [], isPending } = useQuery({
         queryKey: ["properties", currentProperty?.purpose],
-        queryFn: async () => {
-            return await PropertiesService.fetchProperties({
-                purpose: currentProperty?.purpose || "rent",
-                type: "",
-            });
+        queryFn: () => {
+            fetchProperties({ purpose: currentProperty?.purpose || "rent" });
         },
         enabled: !!currentProperty,
         staleTime: 1000 * 60 * 30,
@@ -66,11 +63,11 @@ const RelatedProperties = () => {
     }
 
     return (
-        <section className="related-properties">
+        <section className={styles.relatedProperties}>
             <h3>Related Properties</h3>
-            <div className="properties-page__list">
+            <div className={styles.relatedPropertiesList}>
                 {relatedProperties.map((property: Property) => (
-                    <PropertyItem key={property.id} property={property} />
+                    <PropertyItem key={property.id} property={property} itemsPerRow={3} />
                 ))}
             </div>
         </section>

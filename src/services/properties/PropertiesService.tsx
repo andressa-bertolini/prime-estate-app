@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Property, FetchParams } from "../../types/properties.types";
+import { Property, FetchParams } from "@/types/properties.types";
 
 export type IProperty = Property;
 
@@ -23,7 +23,7 @@ const toQueryParams = (params: FetchParams = {}) => {
   return query;
 };
 
-const fetchProperties = async (params: FetchParams = {}): Promise<Property[]> => {
+export const fetchProperties = async (params: FetchParams = {}): Promise<Property[]> => {
   const query = toQueryParams(params);
 
   try {
@@ -51,7 +51,7 @@ const fetchProperties = async (params: FetchParams = {}): Promise<Property[]> =>
   }
 };
 
-const fetchPropertyById = async (id: number): Promise<Property | undefined> => {
+export const fetchPropertyById = async (id: number): Promise<Property | undefined> => {
   try {
     const response = await PropertiesApi.get<Property>(`/properties/${id}`);
     return response.data;

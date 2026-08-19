@@ -238,7 +238,7 @@ const Properties = () => {
                   {!isPending && !isFiltering ? (
                       filteredProperties && filteredProperties.length > 0 ? (
                           paginatedProperties?.map((property: IProperty) => (
-                              <PropertyItem property={property} key={property.id} />
+                              <PropertyItem property={property} itemsPerRow={3} key={property.id} />
                           ))
                       ) : (
                           <div className="not-found">

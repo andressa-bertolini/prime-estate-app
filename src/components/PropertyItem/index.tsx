@@ -6,12 +6,12 @@ import IconBath from "@/assets/icons/IconBath";
 import { Property } from "@/types/properties.types";
 import styles from "./styles.module.css";
 
-const PropertyItem = ({ property }: { property: Property }) => {
+const PropertyItem = ({ property, itemsPerRow = 4 }: { property: Property, itemsPerRow?: number; }) => {
     const limit = 4;
     const limitedAmenities = property.amenities.slice(0, limit);
 
     return (
-        <NavLink to={`/property/${property.id}`} className={styles.propertyItem}>
+        <NavLink to={`/property/${property.id}`} className={styles.propertyItem} style={{ "--items-per-row": itemsPerRow } as React.CSSProperties}>
             <img src={property.featuredImage} className={styles.propertyCover} alt={property.title}/>
             <span className={`${styles.propertyBadge} propertyBadge`}>
                 {property.purpose === 'rent' ? 'For Rent' : ''}
