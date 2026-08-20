@@ -1,21 +1,22 @@
 import styles from './styles.module.css';
 
-interface ChoiceChipsProps {
-    value: string;
+type ChoiceChipsProps = {
+    value: "rent" | "sale";
     onChange: (value: string) => void;
 }
   
-const ChoiceChips: React.FC<ChoiceChipsProps> = ({ value, onChange }) => {
-    const handleChipClick = (e: React.MouseEvent<HTMLButtonElement>, newPurpose: string) => {
-        e.preventDefault();
-        if (newPurpose !== value) {
-          onChange(newPurpose);
-        }
-};
+const ChoiceChips = ({ value = "rent", onChange }:ChoiceChipsProps) => {
+
+  const handleChipClick = (e: React.MouseEvent<HTMLButtonElement>, newPurpose: string) => {
+      e.preventDefault();
+      if (newPurpose !== value) {
+        onChange(newPurpose);
+      }
+  };
   
-const activeIndex = value === "rent" ? 0 : 1;
+  const activeIndex = value === "rent" ? 0 : 1;
   
-return (
+  return (
     <div className={styles.choiceChips}>
         <div className={styles.choiceChipsBg} style={{ left: `${activeIndex * 50}%` }}></div>
         <button

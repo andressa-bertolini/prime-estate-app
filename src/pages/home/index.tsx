@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { IProperty } from "../properties.types"
+import { Property } from "@/types/properties.types"
 import { PropertiesService } from "@/services/properties/PropertiesService";
 import { NavLink } from "react-router-dom";
 
@@ -15,7 +15,7 @@ import Savings from "@/assets/images/savings.jpg";
 import HomeKeys from "@/assets/images/home-keys.jpg";
 
 const Home = () => {
-    const usePropertyQuery = (queryKey: string, queryFn: () => Promise<IProperty[]>) => {
+    const usePropertyQuery = (queryKey: string, queryFn: () => Promise<Property[]>) => {
         return useQuery({
             queryKey: [queryKey],
             staleTime: 1000 * 60 * 30,
@@ -42,7 +42,7 @@ const Home = () => {
                 {isPendingRent && 
                     [...Array(4)].map((_, i) => <LoadingSkeleton key={i} itemsPerRow={4} />)
                 }
-                {!isPendingRent && Array.isArray(propertiesRent) && propertiesRent.map((property: IProperty) => (
+                {!isPendingRent && Array.isArray(propertiesRent) && propertiesRent.map((property: Property) => (
                     <PropertyItem property={property} key={property.id} />
                 ))}
             </div>
@@ -57,7 +57,7 @@ const Home = () => {
                 {isPendingSale && 
                     [...Array(4)].map((_, i) => <LoadingSkeleton key={i} itemsPerRow={4} />)
                 }
-                {!isPendingSale && Array.isArray(propertiesSale) && propertiesSale.map((property: IProperty) => (
+                {!isPendingSale && Array.isArray(propertiesSale) && propertiesSale.map((property: Property) => (
                     <PropertyItem property={property} key={property.id} />
                 ))}
             </div>

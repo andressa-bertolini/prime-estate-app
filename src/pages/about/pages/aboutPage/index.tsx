@@ -1,7 +1,8 @@
-import Office from "@/assets/images/office.png";
 import AboutTopics from "@/components/AboutTopics";
-import HomeKeys from "@/assets/images/home-keys.jpg";
 import FullBackgroundCTA from "@/components/FullBackgroundCTA";
+
+import Office from "@/assets/images/office.png";
+import HomeKeys from "@/assets/images/home-keys.jpg";
 
 const About = () => {
   return(

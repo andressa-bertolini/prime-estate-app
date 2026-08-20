@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect, useRef } from 'react';
 import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { IProperty, PropertiesService } from "@/services/properties/PropertiesService";
+import { PropertiesService } from "@/services/properties/PropertiesService";
 import { 
   Autocomplete, 
   TextField,
@@ -17,6 +17,7 @@ import Search from "@/components/Search";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 import Pagination from "@/components/Pagination";
 import PropertiesMapView from "@/components/PropertiesMapView";
+import { Property } from "@/types/properties.types";
 
 const ITEMS_PER_PAGE = 9;
 
@@ -237,7 +238,7 @@ const Properties = () => {
                   }
                   {!isPending && !isFiltering ? (
                       filteredProperties && filteredProperties.length > 0 ? (
-                          paginatedProperties?.map((property: IProperty) => (
+                          paginatedProperties?.map((property: Property) => (
                               <PropertyItem property={property} itemsPerRow={3} key={property.id} />
                           ))
                       ) : (
