@@ -1,4 +1,4 @@
-import FullBackgroundCTA from "@/layouts/FullBackgroundCTA";
+import FullBackgroundCTA from "@/components/FullBackgroundCTA";
 import HomeKeys from "@/assets/images/home-keys.jpg";
 
 import Agent1 from "@/assets/images/agent1.png";

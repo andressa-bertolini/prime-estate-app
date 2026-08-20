@@ -80,7 +80,7 @@ const Search = ({ variant, onSearch }: SearchProps) => {
     const [places, setPlaces] = useState<{ name: string; type: string }[]>([]);
     const [openFilter, setOpenFilter] = useState(false);
     
-    const options = ["Apartment", "House"].map(opt => opt.toLowerCase());
+    const options = ["apartment", "house"];
     const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
     const { min: minPrice, max: maxPrice } = getPriceRange(purpose);

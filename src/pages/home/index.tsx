@@ -6,8 +6,8 @@ import { NavLink } from "react-router-dom";
 /* Components */
 import Search from "@/components/Search";
 import PropertyItem from "@/components/PropertyItem";
-import Skeleton from "@/components/Skeleton";
-import FullBackgroundCTA from "@/layouts/FullBackgroundCTA";
+import LoadingSkeleton from "@/components/LoadingSkeleton";
+import FullBackgroundCTA from "@/components/FullBackgroundCTA";
 import AboutTopics from "@/components/AboutTopics";
 
 /* Images */
@@ -40,7 +40,7 @@ const Home = () => {
             </div>
             <div className="properties-list">
                 {isPendingRent && 
-                    [...Array(4)].map((_, i) => <Skeleton key={i} grid={4} />)
+                    [...Array(4)].map((_, i) => <LoadingSkeleton key={i} itemsPerRow={4} />)
                 }
                 {!isPendingRent && Array.isArray(propertiesRent) && propertiesRent.map((property: IProperty) => (
                     <PropertyItem property={property} key={property.id} />
@@ -55,7 +55,7 @@ const Home = () => {
             />
             <div className="properties-list">
                 {isPendingSale && 
-                    [...Array(4)].map((_, i) => <Skeleton key={i} grid={4} />)
+                    [...Array(4)].map((_, i) => <LoadingSkeleton key={i} itemsPerRow={4} />)
                 }
                 {!isPendingSale && Array.isArray(propertiesSale) && propertiesSale.map((property: IProperty) => (
                     <PropertyItem property={property} key={property.id} />

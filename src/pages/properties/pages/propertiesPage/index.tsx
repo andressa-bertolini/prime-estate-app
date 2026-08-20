@@ -14,7 +14,7 @@ import IconFilter from "@/assets/icons/icon-filter.svg";
 
 import PropertyItem from "@/components/PropertyItem";
 import Search from "@/components/Search";
-import Skeleton from "@/components/Skeleton";
+import LoadingSkeleton from "@/components/LoadingSkeleton";
 import Pagination from "@/components/Pagination";
 import PropertiesMapView from "@/components/PropertiesMapView";
 
@@ -233,7 +233,7 @@ const Properties = () => {
                   
                 {viewMode === "list" && <><div className="properties-page__list">
                   {(isPending || isFiltering) &&
-                      [...Array(9)].map((_, i) => <Skeleton key={i} grid={3} />)
+                      [...Array(9)].map((_, i) => <LoadingSkeleton key={i} itemsPerRow={3} />)
                   }
                   {!isPending && !isFiltering ? (
                       filteredProperties && filteredProperties.length > 0 ? (
