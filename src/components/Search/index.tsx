@@ -4,29 +4,78 @@ import {
     Autocomplete, 
     TextField,
     Slider,
-    InputAdornment
+    InputAdornment,
+    Stack,
+    Chip
 } from '@mui/material';
-import { useSearch, searchDefaultValues } from "@/context/SearchContext";
-import { SearchService } from "@/services/search/SearchService";
-import ChoiceChips from "../ChoiceChips";
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
+import { SearchService } from "@/services/search/SearchService";
+import ChoiceChips from "../ChoiceChips";
+import { SearchParams } from "@/types/search.types";
 import styles from './styles.module.css';
 
 type SearchProps = {
-    variant: string;
+    variant: "inline" | "sidebar";
     onSearch?: () => void;
 };
+
+const searchDefaultValues = {
+    query: '',
+    purpose: 'rent',
+    type: 'apartment',
+    beds: 0,
+    baths: 0,
+} as const;
+
+const getPriceRange = (purpose: string) => {
+    return purpose === 'sale'
+        ? { min: 50000, max: 1000000 }
+        : { min: 500, max: 5000 };
+};
+
+const getDefaultFormState = (): SearchParams => {
+    const { min, max } = getPriceRange(searchDefaultValues.purpose);
+
+    return {
+        query: searchDefaultValues.query,
+        purpose: searchDefaultValues.purpose,
+        type: searchDefaultValues.type,
+        priceMin: min,
+        priceMax: max,
+        beds: searchDefaultValues.beds,
+        baths: searchDefaultValues.baths,
+    };
+};
+
+const parseFormStateFromUrl = (urlSearchParams: URLSearchParams): SearchParams => {
+    const hasQueryParams = Array.from(urlSearchParams.keys()).length > 0;
+
+    if (!hasQueryParams) {
+        return getDefaultFormState();
+    }
+
+    const purposeParam = urlSearchParams.get('purpose') || searchDefaultValues.purpose;
+    const { min: defaultMinPrice, max: defaultMaxPrice } = getPriceRange(purposeParam);
+
+    return {
+        query: urlSearchParams.get('query') || '',
+        purpose: purposeParam,
+        type: urlSearchParams.get('type') || searchDefaultValues.type,
+        priceMin: Number(urlSearchParams.get('priceMin')) || defaultMinPrice,
+        priceMax: Number(urlSearchParams.get('priceMax')) || defaultMaxPrice,
+        beds: Number(urlSearchParams.get('beds')) || 0,
+        baths: Number(urlSearchParams.get('baths')) || 0,
+    };
+};
+
 
 const Search = ({ variant, onSearch }: SearchProps) => {
     const [urlSearchParams] = useSearchParams();
     const navigate = useNavigate();
 
-    const { searchParams: {
-        query, purpose, type, price, beds, baths
-    }, setSearchParams } = useSearch();
+    const [formState, setFormState] = useState(getDefaultFormState);
+    const { query, purpose, type, priceMin, priceMax, beds, baths } = formState;
 
     const [places, setPlaces] = useState<{ name: string; type: string }[]>([]);
     const [openFilter, setOpenFilter] = useState(false);
@@ -34,56 +83,36 @@ const Search = ({ variant, onSearch }: SearchProps) => {
     const options = ["Apartment", "House"].map(opt => opt.toLowerCase());
     const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-    const getPriceRange = (currentPurpose: string) => {
-        return currentPurpose === "sale" 
-            ? { min: 50000, max: 1000000 }
-            : { min: 500, max: 5000 };
-    };
-
     const { min: minPrice, max: maxPrice } = getPriceRange(purpose);
 
     const setQuery = (newQuery: string) => {
-        setSearchParams(prev => ({
-            ...prev,
-            query: newQuery
-        }));
+        setFormState(prev => ({ ...prev, query: newQuery }));
     };
 
     const setPurpose = (newPurpose: string) => {
         const newRange = getPriceRange(newPurpose);
-        setSearchParams(prev => ({
+        setFormState(prev => ({
             ...prev,
             purpose: newPurpose,
-            price: [newRange.min, newRange.max]
+            priceMin: newRange.min,
+            priceMax: newRange.max,
         }));
     };
 
     const setType = (newType: string) => {
-        setSearchParams(prev => ({
-            ...prev,
-            type: newType
-        }));
+        setFormState(prev => ({ ...prev, type: newType }));
     };
 
-    const setPrice = (newPrice: [number, number]) => {
-        setSearchParams(prev => ({
-            ...prev,
-            price: newPrice
-        }));
+    const setPrice = (newPriceMin: number, newPriceMax: number) => {
+        setFormState(prev => ({ ...prev, priceMin: newPriceMin, priceMax: newPriceMax }));
     };
 
     const setBeds = (newBeds: number) => {
-        setSearchParams(prev => ({
-            ...prev,
-            beds: newBeds
-        }));
+        setFormState(prev => ({ ...prev, beds: newBeds }));
     };
 
     const setBaths = (newBaths: number) => {
-        setSearchParams(prev => ({
-            ...prev,
-            baths: newBaths
-        }));
+        setFormState(prev => ({ ...prev, baths: newBaths }));
     };
 
     const handlePurposeValue = (data: string) => {
@@ -91,7 +120,8 @@ const Search = ({ variant, onSearch }: SearchProps) => {
     };
 
     const handlePriceChange = (_event: Event, newValue: number | number[]) => {
-        setPrice(newValue as [number, number]);
+        const [newPriceMin, newPriceMax] = newValue as [number, number];
+        setPrice(newPriceMin, newPriceMax);
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLImageElement>) => {
@@ -99,8 +129,8 @@ const Search = ({ variant, onSearch }: SearchProps) => {
         if (query) params.append('query', query);
         if (purpose) params.append('purpose', purpose);
         if (type) params.append('type', type);
-        if (price[0] !== minPrice) params.append('priceMin', String(price[0]));
-        if (price[1] !== maxPrice) params.append('priceMax', String(price[1]));
+        if (priceMin !== minPrice) params.append('priceMin', String(priceMin));
+        if (priceMax !== maxPrice) params.append('priceMax', String(priceMax));
         if (beds) params.append('beds', String(beds));
         if (baths) params.append('baths', String(baths));
 
@@ -150,50 +180,11 @@ const Search = ({ variant, onSearch }: SearchProps) => {
     }, []);
 
     useEffect(() => {
-        const hasQueryParams = Array.from(urlSearchParams.keys()).length > 0;
-        
-        if (hasQueryParams) {
-            const queryParam = urlSearchParams.get("query") || '';
-            const purposeParam = urlSearchParams.get("purpose") || searchDefaultValues.purpose;
-            const typeParam = urlSearchParams.get("type") || searchDefaultValues.type;
-            
-            const isPurposeSale = purposeParam === 'sale';
-            const defaultMinPrice = isPurposeSale ? 50000 : 500;
-            const defaultMaxPrice = isPurposeSale ? 1000000 : 5000;
-            
-            const priceMin = Number(urlSearchParams.get("priceMin")) || defaultMinPrice;
-            const priceMax = Number(urlSearchParams.get("priceMax")) || defaultMaxPrice;
-            const bedsParam = Number(urlSearchParams.get("beds")) || 0;
-            const bathsParam = Number(urlSearchParams.get("baths")) || 0;
-            
-            setSearchParams({
-                query: queryParam,
-                purpose: purposeParam,
-                type: typeParam,
-                price: [priceMin, priceMax],
-                beds: bedsParam,
-                baths: bathsParam,
-                sqft: searchDefaultValues.sqft,
-            });
-        } else {
-            const defaultPurpose = searchDefaultValues.purpose;
-            const defaultRange = getPriceRange(defaultPurpose);
-            
-            setSearchParams({
-                query: '',
-                purpose: defaultPurpose,
-                type: searchDefaultValues.type,
-                price: [defaultRange.min, defaultRange.max],
-                beds: 0,
-                baths: 0,
-                sqft: searchDefaultValues.sqft,
-            });
-        }
-    }, [urlSearchParams.toString()]);
+        setFormState(parseFormStateFromUrl(urlSearchParams));
+    }, [urlSearchParams]);
 
-    const safePrice = price && Array.isArray(price) && price.length === 2 
-        ? price 
-        : [minPrice, maxPrice];
+    const safePriceMin = typeof priceMin === 'number' ? priceMin : Number(priceMin) || minPrice;
+    const safePriceMax = typeof priceMax === 'number' ? priceMax : Number(priceMax) || maxPrice;
 
     const safeBeds = typeof beds === 'number' ? beds : Number(beds) || 0;
     const safeBaths = typeof baths === 'number' ? baths : Number(baths) || 0;
@@ -297,7 +288,7 @@ const Search = ({ variant, onSearch }: SearchProps) => {
                             <div>
                                 <Slider
                                     className="customSlider"
-                                    value={safePrice}
+                                    value={[safePriceMin, safePriceMax]}
                                     onChange={handlePriceChange}
                                     valueLabelDisplay="off"
                                     min={minPrice}
@@ -315,9 +306,9 @@ const Search = ({ variant, onSearch }: SearchProps) => {
                                 />
                                 <p>
                                     from&nbsp;
-                                    <strong>${safePrice[0] ? safePrice[0].toLocaleString('en-US') : minPrice.toLocaleString('en-US')}</strong>&nbsp;
+                                    <strong>${safePriceMin.toLocaleString('en-US')}</strong>&nbsp;
                                     to&nbsp;
-                                    <strong>${safePrice[1] ? safePrice[1].toLocaleString('en-US') : maxPrice.toLocaleString('en-US')}</strong>
+                                    <strong>${safePriceMax.toLocaleString('en-US')}</strong>
                                 </p>
                             </div>
                         </label>

@@ -1,5 +1,6 @@
 import axios from "axios";
-import { Property, FetchParams } from "@/types/properties.types";
+import { Property } from "@/types/properties.types";
+import { SearchParams } from "@/types/search.types";
 
 export type IProperty = Property;
 
@@ -11,7 +12,7 @@ const PropertiesApi = axios.create({
   baseURL: `${apiBaseURL}/`,
 });
 
-const toQueryParams = (params: FetchParams = {}) => {
+const toQueryParams = (params: SearchParams = {}) => {
   const query = new URLSearchParams();
 
   Object.entries(params).forEach(([key, value]) => {
@@ -23,7 +24,7 @@ const toQueryParams = (params: FetchParams = {}) => {
   return query;
 };
 
-export const fetchProperties = async (params: FetchParams = {}): Promise<Property[]> => {
+export const fetchProperties = async (params: SearchParams = {}): Promise<Property[]> => {
   const query = toQueryParams(params);
 
   try {

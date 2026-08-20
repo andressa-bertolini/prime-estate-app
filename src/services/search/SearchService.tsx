@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Place, FetchParams } from "../../types/search.types";
+import { Place, SearchParams } from "@/types/search.types";
 
 const apiBaseURL =
   import.meta.env.VITE_API_URL?.replace(/\/$/, "") ||
@@ -9,7 +9,7 @@ const SearchAPI = axios.create({
   baseURL: `${apiBaseURL}/`,
 });
 
-const fetchPlaces = async (params: FetchParams = {}): Promise<Place[]> => {
+const fetchPlaces = async (params: SearchParams = {}): Promise<Place[]> => {
   const query = new URLSearchParams();
 
   if (params.limit !== undefined) {
