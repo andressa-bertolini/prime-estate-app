@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Logo from "@/assets/images/logo-text.png";
-import IconBurgerMenu from "@/assets/icons/icon-burger-menu.svg";
+import IconBurgerMenu from "@/assets/icons/IconBurgerMenu";
 import SearchIcon from '@mui/icons-material/Search';
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
+
+import styles from './styles.module.css';
 
 const Navigation = () => {
     const [navOpen, setNavOpen] = useState(false);
@@ -58,7 +60,7 @@ const Navigation = () => {
                     <NavLink to="/about-us" style={{paddingRight: 0}}>About Us</NavLink>
                 </div>
             </div>
-            <img src={IconBurgerMenu} className="burger-icon" onClick={() => setNavOpen(!navOpen)} alt="Toggle Menu"/>
+            <IconBurgerMenu onClick={() => setNavOpen(!navOpen)} />
         </nav>
     )
 }

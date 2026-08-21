@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import IconPin from "@/assets/icons/icon-pin.svg";
+import { createMapPinElement } from "@/assets/icons/createMapPinElement";
 import { Property } from "@/types/properties.types";
 import styles from "./styles.module.css";
 
@@ -52,22 +52,7 @@ const PropertiesMapView = ({ properties }: PropertiesMapViewProps) => {
                     </a>
                 `);
 
-                const markerElement = document.createElement("div");
-                markerElement.style.width = "40px";
-                markerElement.style.height = "40px";
-                markerElement.style.display = "flex";
-                markerElement.style.alignItems = "center";
-                markerElement.style.justifyContent = "center";
-                markerElement.style.cursor = "pointer";
-
-                const img = document.createElement("img");
-                img.src = IconPin;
-                img.style.width = "100%";
-                img.style.height = "100%";
-                img.style.objectFit = "contain";
-                markerElement.appendChild(img);
-
-                new maplibregl.Marker({ element: markerElement })
+                new maplibregl.Marker({ element: createMapPinElement() })
                     .setLngLat([property.long, property.lat])
                     .setPopup(popup)
                     .addTo(map.current!);

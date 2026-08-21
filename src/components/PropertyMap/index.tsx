@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import IconPin from "@/assets/icons/icon-pin.svg";
+import { createMapPinElement } from "@/assets/icons/createMapPinElement";
 import styles from "./styles.module.css";
 
 type PropertyMapProps = {
@@ -35,20 +35,11 @@ const PropertyMap = ({
         map.current.scrollZoom.disable();
         map.current.touchZoomRotate.disable();
 
-        const markerElement = document.createElement("div");
-        markerElement.style.width = "40px";
-        markerElement.style.height = "40px";
-        markerElement.style.display = "flex";
-        markerElement.style.alignItems = "center";
-        markerElement.style.justifyContent = "center";
-        markerElement.style.cursor = "default";
-
-        const img = document.createElement("img");
-        img.src = IconPin;
-        img.style.width = "100%";
-        img.style.height = "100%";
-        img.style.objectFit = "contain";
-        markerElement.appendChild(img);
+        new maplibregl.Marker({
+            element: createMapPinElement({ cursor: "default" }),
+        })
+            .setLngLat([longitude, latitude])
+            .addTo(map.current);
 
         return () => {
             if (map.current) {

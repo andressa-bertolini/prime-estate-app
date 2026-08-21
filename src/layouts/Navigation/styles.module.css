@@ -1,0 +1,12 @@
+.nav .burger-icon {
+    width: 24px;
+    position: absolute;
+    top: 26px;
+    right: 24px;
+}
+  
+@media (min-width: 768px) {
+    .nav .burger-icon {
+      display: none;
+    }
+}

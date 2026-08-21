@@ -8,9 +8,9 @@ import {
 } from '@mui/material';
 
 import SadHouse from "@/assets/images/sad-house.png";
-import IconMap from "@/assets/icons/icon-map.svg";
-import IconList from "@/assets/icons/icon-list.svg";
-import IconFilter from "@/assets/icons/icon-filter.svg";
+import IconMap from "@/assets/icons/IconMap";
+import IconList from "@/assets/icons/iconList";
+import IconFilter from "@/assets/icons/IconFilter";
 
 import PropertyItem from "@/components/PropertyItem";
 import Search from "@/components/Search";
@@ -184,7 +184,7 @@ const Properties = () => {
                 className={`filters-toggle-btn ${filterSticky && !showFilters ? "is-sticky" : ""} ${showFilters ? "is-open" : ""}`}
                 onClick={() => setShowFilters(!showFilters)}
               >
-                <img src={IconFilter} alt="Filter" />
+                <IconFilter />
                 {showFilters ? "Hide Filters" : "Filters"}
               </button>
               <div className={`search-properties__wrapper ${showFilters ? "is-open" : ""}`}>
@@ -199,14 +199,14 @@ const Properties = () => {
                       className={`view-button ${viewMode === "list" ? "disabled" : ""}`}
                       onClick={() => handleViewModeChange("list")}
                     >
-                      <img src={IconList} alt="List View" />
+                      <IconList color="#ffffff" />
                       List 
                     </button>
                     <button 
                       className={`view-button ${viewMode === "map" ? "disabled" : ""}`}
                       onClick={() => handleViewModeChange("map")}
                     >
-                      <img src={IconMap} alt="Map View" />
+                      <IconMap color="#ffffff"/>
                       Map
                     </button>
                   </div>

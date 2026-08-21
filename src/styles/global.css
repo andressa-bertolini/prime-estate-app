@@ -84,19 +84,6 @@ html, body {
     vertical-align: -7px;
   }
   
-  .nav .burger-icon {
-    width: 24px;
-    position: absolute;
-    top: 26px;
-    right: 24px;
-  }
-  
-  @media (min-width: 768px) {
-    .nav .burger-icon {
-      display: none;
-    }
-  }
-  
   /* .container {
     max-width: 1200px;
     margin: 0 auto;

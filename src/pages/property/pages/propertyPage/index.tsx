@@ -21,7 +21,7 @@ import PropertyMap from "@/components/PropertyMap";
 import IconSqft from "@/assets/icons/iconSqft";
 import IconBed from "@/assets/icons/iconBed";
 import IconBath from "@/assets/icons/iconBath";
-import IconCheck from "@/assets/icons/icon-check.svg";
+import IconCheck from "@/assets/icons/IconCheck";
 import SadHouse from "@/assets/images/sad-house.png";
 
 const Property = () => {
@@ -345,7 +345,7 @@ const Property = () => {
                             {submitSuccess ? (
                                 <div className="success-message">
                                     <p className="success-title">
-                                        <img src={IconCheck} className="check-icon" alt="Sent" />
+                                        <IconCheck className="check-icon" color="#008000" />
                                         Thank you!
                                     </p>
                                     <p className="success-text">
