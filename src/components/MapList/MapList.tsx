@@ -3,15 +3,15 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { createMapPinElement } from "@/utils/createMapPinElement";
 import { Property } from "@/types/properties.types";
-import styles from "./PropertiesMapView.module.css";
+import styles from "./MapList.module.css";
 
-type PropertiesMapViewProps = {
+type MapListProps = {
     properties: Property[];
 }
 
 const baseUrl = import.meta.env.BASE_URL;
 
-const PropertiesMapView = ({ properties }: PropertiesMapViewProps) => {
+const MapList = ({ properties }: MapListProps) => {
     const mapContainer = useRef<HTMLDivElement>(null);
     const map = useRef<maplibregl.Map | null>(null);
 
@@ -81,9 +81,9 @@ const PropertiesMapView = ({ properties }: PropertiesMapViewProps) => {
     return (
         <div
             ref={mapContainer}
-            className={styles.propertiesMapView}
+            className={styles.mapList}
         />
     );
 };
 
-export default PropertiesMapView;
+export default MapList;
