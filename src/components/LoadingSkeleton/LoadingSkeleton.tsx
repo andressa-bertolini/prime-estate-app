@@ -1,4 +1,4 @@
-import styles from './styles.module.css';
+import styles from './LoadingSkeleton.module.css';
 
 type LoadingSkeletonProps = {
   itemsPerRow: number;

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import CalculatorPage from "./pages/calculatorPage/index";
+import CalculatorPage from "./pages/calculatorPage/calculatorPage";
 
 const CalculatorRoutes = () => {
   return(

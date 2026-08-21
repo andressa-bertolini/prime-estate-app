@@ -12,11 +12,11 @@ import IconMap from "@/assets/icons/IconMap";
 import IconList from "@/assets/icons/iconList";
 import IconFilter from "@/assets/icons/IconFilter";
 
-import PropertyItem from "@/components/PropertyItem";
-import Search from "@/components/Search";
-import LoadingSkeleton from "@/components/LoadingSkeleton";
-import Pagination from "@/components/Pagination";
-import PropertiesMapView from "@/components/PropertiesMapView";
+import PropertyItem from "@/components/PropertyItem/PropertyItem";
+import Search from "@/components/Search/Search";
+import LoadingSkeleton from "@/components/LoadingSkeleton/LoadingSkeleton";
+import Pagination from "@/components/Pagination/Pagination";
+import PropertiesMapView from "@/components/MapList/MapList";
 import { Property } from "@/types/properties.types";
 
 const ITEMS_PER_PAGE = 9;

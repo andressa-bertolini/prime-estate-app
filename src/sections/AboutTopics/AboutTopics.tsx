@@ -1,7 +1,7 @@
 import IconTeam from '@/assets/icons/IconTeam';
 import IconHandshake from '@/assets/icons/IconHandshake';
 import IconBulb from '@/assets/icons/IconBulb';
-import styles from "./styles.module.css";
+import styles from "./AboutTopics.module.css";
 
 type AboutTopicsProps = {
     iconsColor?: "white";

@@ -4,7 +4,7 @@ import IconSqft from "@/assets/icons/IconSqft";
 import IconBed from "@/assets/icons/IconBed";
 import IconBath from "@/assets/icons/IconBath";
 import { Property } from "@/types/properties.types";
-import styles from "./styles.module.css";
+import styles from "./PropertyItem.module.css";
 
 const PropertyItem = ({ property, itemsPerRow = 4 }: { property: Property, itemsPerRow?: number; }) => {
     const limit = 4;

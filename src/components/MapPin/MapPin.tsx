@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { createMapPinElement } from "@/utils/createMapPinElement";
-import styles from "./styles.module.css";
+import styles from "./PropertyMap.module.css";
 
 type PropertyMapProps = {
     latitude: number;

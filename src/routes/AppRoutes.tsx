@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import useScrollToTop from "@/hooks/useScrollToTop";
 
-import Navigation from "@/layouts/Navigation";
+import Navigation from "@/layouts/Navigation/Navigation";
 import Footer from "@/layouts/Footer";
-import Home from "@/pages/home";
+import Home from "@/pages/home/home";
 import PropertiesRoutes from "@/pages/properties/propertiesRoutes";
 import PropertyRoutes from "@/pages/property/propertyRoutes";
 import AboutRoutes from "@/pages/about/aboutRoutes";

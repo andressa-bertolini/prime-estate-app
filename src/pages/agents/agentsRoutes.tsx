@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import AgentsPage from "./pages/agentsPage/index";
+import AgentsPage from "./pages/agentsPage/agentsPage";
 
 const AgentsRoutes = () => {
   return (

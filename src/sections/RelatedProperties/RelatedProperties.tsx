@@ -2,9 +2,9 @@ import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProperties, fetchPropertyById } from "@/services/properties/PropertiesService";
-import PropertyItem from "@/components/PropertyItem";
+import PropertyItem from "@/components/PropertyItem/PropertyItem";
 import { Property } from "@/types/properties.types";
-import styles from "./styles.module.css";
+import styles from "./RelatedProperties.module.css";
 
 const RelatedProperties = () => {
     const { id } = useParams<{ id: string }>();

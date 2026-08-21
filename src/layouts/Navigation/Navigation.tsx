@@ -5,7 +5,7 @@ import IconBurgerMenu from "@/assets/icons/IconBurgerMenu";
 import SearchIcon from '@mui/icons-material/Search';
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 
-import styles from './styles.module.css';
+import styles from './Navigation.module.css';
 
 const Navigation = () => {
     const [navOpen, setNavOpen] = useState(false);

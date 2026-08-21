@@ -13,7 +13,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { SearchService } from "@/services/search/SearchService";
 import ChoiceChips from "./ChoiceChips";
 import { SearchParams } from "@/types/search.types";
-import styles from './styles.module.css';
+import styles from './Search.module.css';
 
 type SearchProps = {
     variant: "inline" | "sidebar";

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import PropertyPage from "./pages/propertyPage/index";
+import PropertyPage from "./pages/propertyPage/propertyPage";
 
 const PropertyRoutes = () => {
   return (

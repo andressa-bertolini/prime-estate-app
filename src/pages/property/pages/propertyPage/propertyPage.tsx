@@ -15,8 +15,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-import RelatedProperties from "@/components/RelatedProperties";
-import PropertyMap from "@/components/PropertyMap";
+import RelatedProperties from "src/sections/RelatedProperties/RelatedProperties";
+import PropertyMap from "@/components/MapPin/MapPin";
 
 import IconSqft from "@/assets/icons/iconSqft";
 import IconBed from "@/assets/icons/iconBed";

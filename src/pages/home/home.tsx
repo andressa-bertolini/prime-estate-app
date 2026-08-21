@@ -4,11 +4,11 @@ import { PropertiesService } from "@/services/properties/PropertiesService";
 import { NavLink } from "react-router-dom";
 
 /* Components */
-import Search from "@/components/Search";
-import PropertyItem from "@/components/PropertyItem";
-import LoadingSkeleton from "@/components/LoadingSkeleton";
-import FullBackgroundCTA from "@/components/FullBackgroundCTA";
-import AboutTopics from "@/components/AboutTopics";
+import Search from "@/components/Search/Search";
+import PropertyItem from "@/components/PropertyItem/PropertyItem";
+import LoadingSkeleton from "@/components/LoadingSkeleton/LoadingSkeleton";
+import FullBackgroundCTA from "src/sections/FullBackgroundCTA/FullBackgroundCTA";
+import AboutTopics from "src/sections/AboutTopics/AboutTopics";
 
 /* Images */
 import Savings from "@/assets/images/savings.jpg";
