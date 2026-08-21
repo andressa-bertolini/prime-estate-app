@@ -1,0 +1,36 @@
+.choiceChips {
+  width: 100%;
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.choiceChipsBg {
+  position: absolute;
+  background-color: #1296a9;
+  width: 50%;
+  height: 100%;
+  left: 0;
+  transition: left 0.3s;
+  border-radius: 20px;
+}
+
+.choiceChip {
+  width: 50%;
+  padding: 10px 0;
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  color: #000;
+}
+
+.choiceChip.active {
+  color: #fff;
+}

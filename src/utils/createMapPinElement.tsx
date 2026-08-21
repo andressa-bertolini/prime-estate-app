@@ -1,4 +1,5 @@
-import { ICON_PIN_PATH, ICON_PIN_VIEWBOX } from "./IconPin";
+import { renderToStaticMarkup } from "react-dom/server";
+import IconPin from "@/assets/icons/IconPin";
 
 type CreateMapPinElementOptions = {
   size?: number;
@@ -18,11 +19,9 @@ export const createMapPinElement = ({
   markerElement.style.alignItems = "center";
   markerElement.style.justifyContent = "center";
   markerElement.style.cursor = cursor;
-  markerElement.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="${ICON_PIN_VIEWBOX}" width="100%" height="100%" fill="${color}">
-      <path d="${ICON_PIN_PATH}" />
-    </svg>
-  `;
+  markerElement.innerHTML = renderToStaticMarkup(
+    <IconPin color={color} width={size} height={size} />
+  );
 
   return markerElement;
 };

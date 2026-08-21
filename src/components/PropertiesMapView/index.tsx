@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { createMapPinElement } from "@/assets/icons/createMapPinElement";
+import { createMapPinElement } from "@/utils/createMapPinElement";
 import { Property } from "@/types/properties.types";
 import styles from "./styles.module.css";
 
