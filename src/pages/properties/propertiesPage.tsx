@@ -9,7 +9,7 @@ import {
 
 import SadHouse from "@/assets/images/sad-house.png";
 import IconMap from "@/assets/icons/IconMap";
-import IconList from "@/assets/icons/iconList";
+import IconList from "@/assets/icons/IconList";
 import IconFilter from "@/assets/icons/IconFilter";
 
 import PropertyItem from "@/components/PropertyItem/PropertyItem";
@@ -18,6 +18,7 @@ import LoadingSkeleton from "@/components/LoadingSkeleton/LoadingSkeleton";
 import Pagination from "@/components/Pagination/Pagination";
 import PropertiesMapView from "@/components/MapList/MapList";
 import { Property } from "@/types/properties.types";
+import styles from './properties.module.css';
 
 const ITEMS_PER_PAGE = 9;
 
@@ -31,7 +32,8 @@ const Properties = () => {
     const [isFiltering, setIsFiltering] = useState(false);
 
     const queryString = searchParams.get("query")?.toLowerCase() || '';
-    const purpose = searchParams.get("purpose") || "rent";
+    const purposeParam = searchParams.get("purpose");
+    const purpose = purposeParam === "sale" || purposeParam === "rent" ? purposeParam : "rent";
     const type = searchParams.get("type");
     const priceMin = searchParams.get("priceMin");
     const priceMax = searchParams.get("priceMax");
@@ -178,32 +180,32 @@ const Properties = () => {
     }, []);
 
     return (
-        <div className="properties-page">
-            <div className="properties-page__grid">
+        <div className={styles.propertiesPage}>
+            <div className={styles.propertiesPageGrid}>
               <button
-                className={`filters-toggle-btn ${filterSticky && !showFilters ? "is-sticky" : ""} ${showFilters ? "is-open" : ""}`}
+                className={`${styles.filtersToggle} ${filterSticky && !showFilters ? styles["is-sticky"] : ""} ${showFilters ? styles["is-open"] : ""}`}
                 onClick={() => setShowFilters(!showFilters)}
               >
                 <IconFilter />
                 {showFilters ? "Hide Filters" : "Filters"}
               </button>
-              <div className={`search-properties__wrapper ${showFilters ? "is-open" : ""}`}>
-                  <div className="search-properties">
+              <div className={`${styles.searchPropertiesWrapper} ${showFilters ? styles.open : ""}`}>
+                  <div className={styles.searchProperties}>
                     <Search variant="sidebar" onSearch={() => setShowFilters(false)} />
                   </div>
               </div>
-              <div className="list-properties__wrapper">
-                <div className="list-properties__nav">
+              <div className={styles.listPropertieswrapper}>
+                <div className={styles.listPropertiesNav}>
                   <div>
                     <button 
-                      className={`view-button ${viewMode === "list" ? "disabled" : ""}`}
+                      className={`${styles.viewButton} ${viewMode === "list" ? "disabled" : ""}`}
                       onClick={() => handleViewModeChange("list")}
                     >
                       <IconList color="#ffffff" />
                       List 
                     </button>
                     <button 
-                      className={`view-button ${viewMode === "map" ? "disabled" : ""}`}
+                      className={`${styles.viewButton} ${viewMode === "map" ? "disabled" : ""}`}
                       onClick={() => handleViewModeChange("map")}
                     >
                       <IconMap color="#ffffff"/>
@@ -232,7 +234,7 @@ const Properties = () => {
                   </div>}
                 </div>
                   
-                {viewMode === "list" && <><div className="properties-page__list">
+                {viewMode === "list" && <><div className={styles.propertiesPageList}>
                   {(isPending || isFiltering) &&
                       [...Array(9)].map((_, i) => <LoadingSkeleton key={i} itemsPerRow={3} />)
                   }
@@ -262,7 +264,7 @@ const Properties = () => {
               {viewMode === "map" && (
                   <div className="properties-page__map">
                       {(isPending || isFiltering) ? null : filteredProperties.length > 0 ? (
-                          <PropertiesMapView properties={filteredProperties} height="600px" />
+                          <PropertiesMapView properties={filteredProperties} />
                       ) : (
                           <div className="not-found">
                               <p>No properties found.</p>

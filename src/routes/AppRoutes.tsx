@@ -3,7 +3,7 @@ import useScrollToTop from "@/hooks/useScrollToTop";
 
 import Navigation from "@/layouts/Navigation/Navigation";
 import Footer from "@/layouts/Footer/Footer";
-import Home from "@/pages/home/home";
+import Home from "@/pages/home/homePage";
 import PropertiesRoutes from "@/pages/properties/propertiesRoutes";
 import PropertyRoutes from "@/pages/property/propertyRoutes";
 import AboutRoutes from "@/pages/about/aboutRoutes";

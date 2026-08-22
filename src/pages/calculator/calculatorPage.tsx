@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChangeEvent } from "react";
 import { TextField } from '@mui/material';
+import styles from './calculator.module.css';
 
 const Calculator = () => {
     const [income, setIncome] = useState("");
@@ -92,9 +93,9 @@ const Calculator = () => {
             <div className="container">
                 <h1>Calculator</h1>
             </div>
-            <div className="calculator-grid">
-                <div className="calculator-container">
-                    <div className="calculator">
+            <div className={styles.calculatorGrid}>
+                <div className={styles.calculatorContainer}>
+                    <div className={styles.calculator}>
                         <h1>Purchasing Power</h1>
                         <p>Use our calculator to estimate your budget and start your search for the perfect home</p>
                         <TextField
@@ -121,7 +122,7 @@ const Calculator = () => {
                         <button onClick={calculatePurchasingPower} className="button">
                             Calculate
                         </button>
-                        <div className="calculator-result">
+                        <div className={styles.calculatorResult}>
                             {purchasingPower && (
                             <>
                                 <p className="calculator-result__title">Your purchasing power is</p>
@@ -131,8 +132,8 @@ const Calculator = () => {
                         </div>
                     </div>
                 </div>
-                <div className="calculator-container">
-                    <div className="calculator">
+                <div className={styles.calculatorContainer}>
+                    <div className={styles.calculator}>
                         <h1>Property Value</h1>
                         <p>Found a home you love? Enter the property's price to calculate your estimated down payment</p>
                         <label>

@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
 import LogoWhite from "@/assets/images/logo-text-white.png";
+import styles from './Footer.module.css';
 
 const Footer = () => {
     return(
-        <div className="footer container">
-            <NavLink to="/"><img src={LogoWhite} className="logo" alt="Logo"/></NavLink>
+        <div className={`${styles.footer} container`}>
+            <NavLink to="/"><img src={LogoWhite} className={styles.logo} alt="Logo"/></NavLink>
             <nav>
                 <NavLink to="/properties?purpose=rent">Rent</NavLink>
                 <NavLink to="/properties?purpose=sale">Buy</NavLink>

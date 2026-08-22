@@ -26,6 +26,7 @@
       "@/context/*": ["src/context/*"],
       "@/types/*": ["src/types/*"],
       "@/utils/*": ["src/utils/*"],
+      "@/sections/*": ["src/sections/*"],
     },
 
     /* Linting */

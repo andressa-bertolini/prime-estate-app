@@ -2,17 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Property } from "@/types/properties.types"
 import { PropertiesService } from "@/services/properties/PropertiesService";
 import { NavLink } from "react-router-dom";
-
-/* Components */
 import Search from "@/components/Search/Search";
 import PropertyItem from "@/components/PropertyItem/PropertyItem";
 import LoadingSkeleton from "@/components/LoadingSkeleton/LoadingSkeleton";
-import FullBackgroundCTA from "src/sections/FullBackgroundCTA/FullBackgroundCTA";
-import AboutTopics from "src/sections/AboutTopics/AboutTopics";
-
-/* Images */
+import FullBackgroundCTA from "@/sections/FullBackgroundCTA/FullBackgroundCTA";
+import AboutTopics from "@/sections/AboutTopics/AboutTopics";
 import Savings from "@/assets/images/savings.jpg";
 import HomeKeys from "@/assets/images/home-keys.jpg";
+import styles from './home.module.css';
 
 const Home = () => {
     const usePropertyQuery = (queryKey: string, queryFn: () => Promise<Property[]>) => {
@@ -31,14 +28,14 @@ const Home = () => {
 
     return(
         <>  
-            <div className="home-search search-container">
-                <div className="search">
-                    <div className="home-search__wrapper">
+            <div className={styles.searchContainer}>
+                <div className={styles.search}>
+                    <div className={styles.searchWrapper}>
                         <Search variant="inline" />
                     </div>
                 </div>
             </div>
-            <div className="properties-list">
+            <div className={styles.propertiesList}>
                 {isPendingRent && 
                     [...Array(4)].map((_, i) => <LoadingSkeleton key={i} itemsPerRow={4} />)
                 }
@@ -53,7 +50,7 @@ const Home = () => {
                 buttonText="Calculate"
                 link="calculator"
             />
-            <div className="properties-list">
+            <div className={styles.propertiesList}>
                 {isPendingSale && 
                     [...Array(4)].map((_, i) => <LoadingSkeleton key={i} itemsPerRow={4} />)
                 }
@@ -69,7 +66,7 @@ const Home = () => {
                 link="realtors"
             />
 
-            <div className="home-about">
+            <div className={styles.about}>
                 <h2>Prime Estate: Your Trusted Partner in Real Estate</h2>
                 <p>Helping You Find the Perfect Home with Ease and Confidence</p>
                     <AboutTopics />

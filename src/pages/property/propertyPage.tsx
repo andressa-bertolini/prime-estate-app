@@ -15,12 +15,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-import RelatedProperties from "src/sections/RelatedProperties/RelatedProperties";
+import RelatedProperties from "@/sections/RelatedProperties/RelatedProperties";
 import PropertyMap from "@/components/MapPin/MapPin";
 
-import IconSqft from "@/assets/icons/iconSqft";
-import IconBed from "@/assets/icons/iconBed";
-import IconBath from "@/assets/icons/iconBath";
 import IconCheck from "@/assets/icons/IconCheck";
 import SadHouse from "@/assets/images/sad-house.png";
 
@@ -338,9 +335,6 @@ const Property = () => {
                 <div>
                     <div className="property-page__contact">
                         <div className="property-page__contact-wrapper">
-                            {property.agency?.logo?.url && (
-                                <img src={property.agency.logo.url} alt="Agency Logo" />
-                            )}
                             <h3>Interested? Send your information and we will contact you shortly</h3>
                             {submitSuccess ? (
                                 <div className="success-message">

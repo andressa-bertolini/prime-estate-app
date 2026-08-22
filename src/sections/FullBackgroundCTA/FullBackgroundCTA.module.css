@@ -1,0 +1,48 @@
+.fullBackgroundCTA {
+    background-color: #dcdede;
+    background-size: cover;
+    margin: 24px;
+    padding: 100px 0;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@media(max-width: 767px){
+    .fullBackgroundCTA {
+      padding: 15px;
+    }
+}
+
+@media(min-width: 768px){
+    .fullBackgroundCTA {
+      width: calc(100% - 50px);
+    }
+}
+
+ .fullBackgroundCTA__image img{
+    object-fit: cover;
+    width: 100%;
+  }
+
+.fullBackgroundCTA a{
+    border: 1px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: background-color ease-in-out 0.3s;
+}
+
+@media(max-width: 767px){
+    .fullBackgroundCTA a{
+      width: 100%;
+      box-sizing: border-box;
+    }
+}
+
+.fullBackgroundCTA a:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+}

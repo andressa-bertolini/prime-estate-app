@@ -1,5 +1,5 @@
-import AboutTopics from "src/sections/AboutTopics/AboutTopics";
-import FullBackgroundCTA from "src/sections/FullBackgroundCTA/FullBackgroundCTA";
+import AboutTopics from "@/sections/AboutTopics/AboutTopics";
+import FullBackgroundCTA from "@/sections/FullBackgroundCTA/FullBackgroundCTA";
 
 import Office from "@/assets/images/office.png";
 import HomeKeys from "@/assets/images/home-keys.jpg";

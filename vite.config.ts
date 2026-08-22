@@ -16,6 +16,7 @@ export default defineConfig({
       '@/context': path.resolve(__dirname, 'src/context'),
       '@/types': path.resolve(__dirname, 'src/types'),
       '@/utils': path.resolve(__dirname, 'src/utils'),
+      '@/sections': path.resolve(__dirname, 'src/sections'),
     },
   },
 })

@@ -12,7 +12,7 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { SearchService } from "@/services/search/SearchService";
 import ChoiceChips from "./ChoiceChips";
-import { SearchParams } from "@/types/search.types";
+import { Purpose, SearchParams } from "@/types/search.types";
 import styles from './Search.module.css';
 
 type SearchProps = {
@@ -22,13 +22,16 @@ type SearchProps = {
 
 const searchDefaultValues = {
     query: '',
-    purpose: 'rent',
+    purpose: 'rent' as Purpose,
     type: 'apartment',
     beds: 0,
     baths: 0,
 } as const;
 
-const getPriceRange = (purpose: string) => {
+const parsePurpose = (value: string | null | undefined): Purpose =>
+    value === 'sale' || value === 'rent' ? value : searchDefaultValues.purpose;
+
+const getPriceRange = (purpose: Purpose) => {
     return purpose === 'sale'
         ? { min: 50000, max: 1000000 }
         : { min: 500, max: 5000 };
@@ -55,7 +58,7 @@ const parseFormStateFromUrl = (urlSearchParams: URLSearchParams): SearchParams =
         return getDefaultFormState();
     }
 
-    const purposeParam = urlSearchParams.get('purpose') || searchDefaultValues.purpose;
+    const purposeParam = parsePurpose(urlSearchParams.get('purpose'));
     const { min: defaultMinPrice, max: defaultMaxPrice } = getPriceRange(purposeParam);
 
     return {
@@ -75,7 +78,7 @@ const Search = ({ variant, onSearch }: SearchProps) => {
     const navigate = useNavigate();
 
     const [formState, setFormState] = useState(getDefaultFormState);
-    const { query, purpose, type, priceMin, priceMax, beds, baths } = formState;
+    const { query, purpose = searchDefaultValues.purpose, type = searchDefaultValues.type, priceMin, priceMax, beds, baths } = formState;
 
     const [places, setPlaces] = useState<{ name: string; type: string }[]>([]);
     const [openFilter, setOpenFilter] = useState(false);
@@ -89,7 +92,7 @@ const Search = ({ variant, onSearch }: SearchProps) => {
         setFormState(prev => ({ ...prev, query: newQuery }));
     };
 
-    const setPurpose = (newPurpose: string) => {
+    const setPurpose = (newPurpose: Purpose) => {
         const newRange = getPriceRange(newPurpose);
         setFormState(prev => ({
             ...prev,
@@ -116,7 +119,7 @@ const Search = ({ variant, onSearch }: SearchProps) => {
     };
 
     const handlePurposeValue = (data: string) => {
-        setPurpose(data);
+        setPurpose(parsePurpose(data));
     };
 
     const handlePriceChange = (_event: Event, newValue: number | number[]) => {
@@ -263,7 +266,7 @@ const Search = ({ variant, onSearch }: SearchProps) => {
                                         inputProps={{
                                             ...params.inputProps,
                                             readOnly: true,
-                                            value: capitalize(type),
+                                            value: capitalize(type ?? ''),
                                         }}
                                         InputProps={{
                                             ...params.InputProps,
@@ -287,7 +290,7 @@ const Search = ({ variant, onSearch }: SearchProps) => {
                             <span>Price limit</span>
                             <div>
                                 <Slider
-                                    className="customSlider"
+                                    className={styles.customSlider}
                                     value={[safePriceMin, safePriceMax]}
                                     onChange={handlePriceChange}
                                     valueLabelDisplay="off"

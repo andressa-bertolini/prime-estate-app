@@ -40,3 +40,21 @@
 .submit {
     margin-top: 0 !important;
 }
+
+.customSlider {
+    padding-top: 9px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 3px !important;
+}
+
+.customSlider :global(.MuiSlider-thumb) {
+    background-color: #1296a9;
+}
+  
+.customSlider :global(.MuiSlider-track) {
+    background-color: #1296a9;
+}
+  
+.customSlider :global(.MuiSlider-rail) {
+    background-color: #7c7b7b;
+}

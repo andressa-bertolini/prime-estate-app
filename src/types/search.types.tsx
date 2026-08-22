@@ -1,6 +1,8 @@
+export type Purpose = "rent" | "sale";
+
 export type SearchParams = {
   query?: string;
-  purpose: "rent" | "sale";
+  purpose?: Purpose;
   type?: string;
   priceMin?: string | number;
   priceMax?: string | number;
